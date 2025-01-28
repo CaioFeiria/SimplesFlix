@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Movie } from '../../models/movie.model';
 import { MovieService } from '../../service/movie.service';
+import { MovieListItem } from '../../types/movieListItem';
 
 @Component({
   selector: 'app-movies',
@@ -19,16 +20,16 @@ import { MovieService } from '../../service/movie.service';
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent {
   encodeURIComponent = encodeURIComponent;
   movieController: number = 8;
-  movies: Movie[] = [];
-  filteredMovies!: Movie[];
+  movies: MovieListItem[] = [];
+  filteredMovies!: MovieListItem[];
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movies = this.movieService.getMovies();
+    this.movies = this.movieService.getMoviesForListPage();
     this.filteredMovies = this.movies;
   }
 

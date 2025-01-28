@@ -1,8 +1,26 @@
 <section class="mycontainer">
   <aside class="sidebar">
-    <app-side-bar></app-side-bar>
+    <app-side-bar />
   </aside>
   <main class="main-content">
     <router-outlet />
   </main>
 </section>
+
+
+<!-- Precisa do Angular CDK BreakpointObserver.
+<ng-container *ngIf="isMobile; else desktopLayout">
+  <header class="mobile-header">
+  </header>
+  <router-outlet></router-outlet>
+</ng-container>
+
+<ng-template #desktopLayout>
+  <div class="mycontainer">
+    <aside class="sidebar">
+    </aside>
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</ng-template> -->

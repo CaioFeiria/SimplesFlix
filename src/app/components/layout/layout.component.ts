@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SideBarComponent } from '../side-bar/side-bar.component';
 import { RouterOutlet } from '@angular/router';
+import { SideBarComponent } from '../side-bar/side-bar.component';
 
 @Component({
   selector: 'app-layout',
@@ -8,4 +8,14 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  // isMobile: boolean = false;
+  // constructor(private breakpointObserver: BreakpointObserver) {}
+  // ngOnInit() {
+  //   this.breakpointObserver
+  //     .observe([Breakpoints.Handset])
+  //     .subscribe((result) => {
+  //       this.isMobile = result.matches;
+  //     });
+  // }
+}

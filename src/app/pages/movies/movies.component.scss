@@ -25,6 +25,7 @@
 .containerMovies {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   align-items: center;
   background-color: white;
   padding-bottom: 20px;

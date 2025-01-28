@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie.model';
+import { MovieListItem } from '../types/movieListItem';
 
 @Injectable({
   providedIn: 'root', // Faz o serviço ser global e disponível em toda a aplicação
@@ -330,5 +331,13 @@ export class MovieService {
 
   getMovies(): Movie[] {
     return this.movies;
+  }
+
+  getMoviesForListPage(): MovieListItem[] {
+    return this.movies.map(({ image, title, releaseDate }) => ({
+      image,
+      title,
+      releaseDate,
+    }));
   }
 }
