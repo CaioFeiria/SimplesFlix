@@ -1,0 +1,32 @@
+.myContainer {
+  display: flex;
+
+  .divCast {
+    margin-top: 23px;
+
+    h3 {
+      padding: 25px;
+      font-size: 26px;
+    }
+    
+    background-color: white;
+    width: 551px;
+    height: 571px;
+    border-radius: 12px;
+
+    .divButton {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      margin-right: 23px;
+    
+      button {
+        background-color: #1d4ed8;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 16px 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<main class="myContainer">
+  <div class="movieCard">
+    <div class="divImg">
+      <img [src]="imgMovie" alt="Capa Filme">
+    </div>
+    <div class="divInfo">
+      <div class="dateAndEvaluation">
+        <div class="rating">
+          <img src="/assets/star.png" alt="Estrela" width="27" height="27">
+          <span>{{ rating }}</span>
+        </div>
+        <div class="description">
+          <p>Dirigido por <strong>{{ director }}</strong></p>
+          <p>{{ releaseDate }}</p>
+        </div>
+      </div>
+      <div [ngClass]="{ 'filmeGenre-space-between': genres.length >= 3, 'filmeGenre-center': genres.length < 3 }">
+        <span *ngFor="let genre of genres">
+          {{ genre }}
+        </span>
+      </div>
+    </div>
+  </div>
+</main>

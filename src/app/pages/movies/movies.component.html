@@ -1,0 +1,28 @@
+<div class="divHeader">
+  <app-header-information 
+    [previous]="'Inicio'"
+    [current]="'Filmes'"
+    [movieTitle]="'Filmes'"
+  />
+</div>
+<div>
+  <app-search (searched)="searchedMovie($event)" [numMovies]="movieController"/>
+</div>
+<div class="containerMovies">
+  @for (movie of filteredMovies.slice(0, movieController); track $index) {
+    <div class="divMovies">
+      <app-movie-card
+        [image]="movie.image"
+        [movieTitle]="movie.title"
+        [releaseDate]="movie.releaseDate"
+        [routerLink]="['/details', encodeURIComponent(movie.title)]" 
+      >
+      </app-movie-card>
+    </div>
+  }
+</div>
+<div class="divBtnLoad">
+  @if (movieController < movies.length) {
+    <button (click)="loadMoreMovies()" class="btnLoadMore">Ver Mais</button>
+  }
+</div>

@@ -1,0 +1,30 @@
+section {
+  background-color: white;
+  width: 551px;
+  height: 225px;
+  border-radius: 12px;
+  margin-top: 5.4rem;
+  padding: 30px;
+
+  .divTitle {
+    text-align: start;
+
+    h3 {
+      font-weight: 600;
+      font-size: 24px;
+      color: #111827;
+    }
+  }
+
+  .divSinopse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 22px;
+
+    p {
+      font-size: 17px;
+      color: #111827;
+    }
+  }
+}

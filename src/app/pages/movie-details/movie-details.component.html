@@ -1,0 +1,30 @@
+<div>
+  <app-header-information 
+    [previous]="'Filmes'"
+    [current]="'Detalhes'"
+    [movieTitle]="title"
+  />
+</div>
+<section class="myContainer">
+    <app-card-details-movie 
+      [imgMovie]="imgMovie"
+      [releaseDate]="releaseDate"
+      [director]="director"
+      [rating]="rating"
+      [genres]="genres"
+    />
+    <section class="divCast">
+      <h3>Elenco</h3>
+        <app-movie-cast-card *ngFor="let cast of castDetails"
+          [actorName]="cast.actorName"
+          [personName]="cast.character"
+          [actorPhoto]="cast.actorImage"
+        />    
+      <div class="divButton">
+        <button>Ver mais +</button>
+      </div>
+      <app-synopsis-card 
+        [sinopse]="sinopse"
+      /> 
+    </section>
+</section>

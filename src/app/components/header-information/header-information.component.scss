@@ -1,0 +1,23 @@
+.infoPages {
+  display: flex;
+  padding-top: 41px;
+  font-size: 14px;
+
+  .previousPage {
+    color: #4B5563;
+  }
+
+  span {
+    color: #4B5563;
+    padding: 0px 6px;
+  }
+
+  .currentPage {
+    color: #4B5563;
+  }
+}
+
+.divTitle h2 {
+  font-size: 36px;
+  color: #111827;
+}

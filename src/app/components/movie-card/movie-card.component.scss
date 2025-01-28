@@ -1,0 +1,32 @@
+.card {
+  border: none;
+  height: 400px;
+  width: 250px;
+
+  .divImg > img{
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .card-body {
+    padding: 10px 0 0 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      width: 18px;
+      height: 18px;
+      margin-right: 2px;
+    }
+  }
+
+  .card-body p {
+    font-size: 16px;
+  }
+
+  .card-body h5 {
+    font-weight: 600;
+    font-size: 22px;
+  }
+}

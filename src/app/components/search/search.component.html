@@ -1,0 +1,11 @@
+<section>
+  <div>
+    <input type="text" 
+      [(ngModel)]="search" 
+      (input)="searchChanges()" 
+      placeholder="Busque um filme...">
+  </div>
+  <div class="divSpan">
+    <span>{{ numMovies }} filmes listados</span>
+  </div>
+</section>
