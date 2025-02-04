@@ -1,30 +1,44 @@
-<div>
+<div class="divHeader">
+  <app-breadcrumb 
+    [previousRoutes]="[
+        { icon: '/assets/icons/home.svg', path: 'Início', href: '/' },
+        { icon: '/assets/icons/movie.svg', path: 'Filmes', href: '/movies' }
+    ]"
+
+    [currentRoute]="
+        { icon: '/assets/icons/info.png', path: movieDetails.title, href: '/movie/' + movieDetails.id }
+    "
+    />
   <app-header-information 
-    [previous]="'Filmes'"
-    [current]="'Detalhes'"
-    [movieTitle]="title"
-  />
+  [movieTitle]="movieDetails.title"
+/>
 </div>
 <section class="myContainer">
     <app-card-details-movie 
-      [imgMovie]="imgMovie"
-      [releaseDate]="releaseDate"
-      [director]="director"
-      [rating]="rating"
-      [genres]="genres"
+      [imgMovie]="movieDetails.imgMovie"
+      [releaseDate]="movieDetails.releaseDate"
+      [director]="movieDetails.director"
+      [rating]="movieDetails.rating"
+      [genres]="movieDetails.genres"
     />
-    <section class="divCast">
-      <h3>Elenco</h3>
-        <app-movie-cast-card *ngFor="let cast of castDetails"
-          [actorName]="cast.actorName"
-          [personName]="cast.character"
-          [actorPhoto]="cast.actorImage"
+    <section class="secCastAndSinopsis">
+      <div class="divCast">
+        <h3 class="title">Elenco</h3>
+        <app-avatar *ngFor="let cast of movieDetails.castDetails"
+          [name]="cast.actorName"
+          [desc]="cast.character"
+          [photo]="cast.actorImage"
         />    
-      <div class="divButton">
-        <button>Ver mais +</button>
+        <div class="divButton">
+          <app-common-button 
+            label="Ver mais +"
+          />
+        </div>
       </div>
-      <app-synopsis-card 
-        [sinopse]="sinopse"
-      /> 
-    </section>
+      <div>
+        <app-synopsis-card 
+          [sinopse]="movieDetails.sinopse"
+        /> 
+      </div>
+  </section>
 </section>

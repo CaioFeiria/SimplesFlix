@@ -1,28 +1,46 @@
-<div class="divHeader">
-  <app-header-information 
-    [previous]="'Inicio'"
-    [current]="'Filmes'"
-    [movieTitle]="'Filmes'"
-  />
-</div>
-<div>
-  <app-search (searched)="searchedMovie($event)" [numMovies]="movieController"/>
-</div>
-<div class="containerMovies">
-  @for (movie of filteredMovies.slice(0, movieController); track $index) {
-    <div class="divMovies">
-      <app-movie-card
-        [image]="movie.image"
-        [movieTitle]="movie.title"
-        [releaseDate]="movie.releaseDate"
-        [routerLink]="['/details', encodeURIComponent(movie.title)]" 
-      >
-      </app-movie-card>
-    </div>
-  }
-</div>
-<div class="divBtnLoad">
-  @if (movieController < movies.length) {
-    <button (click)="loadMoreMovies()" class="btnLoadMore">Ver Mais</button>
-  }
-</div>
+<section>
+  <div class="divHeader">
+    <app-breadcrumb 
+      [previousRoutes]="[
+          { icon: '/assets/icons/home.svg', path: 'Início', href: '/' }
+      ]"
+    
+      [currentRoute]="
+          { icon: '/assets/icons/movie.svg', path: 'Filmes', href: '/movies' }
+      "
+    />
+    <app-header-information 
+      [movieTitle]="'Filmes'"
+    />
+  </div>
+  <div>
+    <app-search 
+     (searched)="filterMovies($event)"
+    />
+    <p class="searchedMovies">{{ movies.length }} filmes listados</p>
+  </div>
+  <div class="containerMovies">
+    <ng-content *ngIf="movies.length > 0; else emptyMovies">
+      @for (movie of movies; track $index) {
+        <div class="divMovies">
+            <app-movie-card
+              [image]="movie.image"
+              [movieTitle]="movie.title"
+              [releaseDate]="movie.releaseDate"
+              [routerLink]="['/movie', movie.id]" 
+            />
+        </div>
+      }
+    </ng-content>
+    <ng-template #emptyMovies>
+      <p class="emptyMovies">Nenhum filme encontrado.</p>
+    </ng-template>
+  </div>
+  <div class="divBtnLoad">
+      <app-common-button 
+        label="Ver mais"
+        icon="/assets/seta.png"
+        (click)="loadMoreMovies()"
+      />
+  </div>
+</section>

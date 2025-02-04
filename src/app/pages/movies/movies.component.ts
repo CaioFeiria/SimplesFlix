@@ -4,9 +4,11 @@ import { HeaderInformationComponent } from '../../components/header-information/
 import { SearchComponent } from '../../components/search/search.component';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Movie } from '../../models/movie.model';
 import { MovieService } from '../../service/movie.service';
 import { MovieListItem } from '../../types/movieListItem';
+import { CommonButtonComponent } from '../../components/common-button/common-button.component';
+import { FormsModule } from '@angular/forms';
+import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-movies',
@@ -16,6 +18,9 @@ import { MovieListItem } from '../../types/movieListItem';
     HeaderInformationComponent,
     SearchComponent,
     RouterLink,
+    CommonButtonComponent,
+    FormsModule,
+    BreadcrumbComponent,
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',
@@ -24,27 +29,29 @@ export class MoviesComponent {
   encodeURIComponent = encodeURIComponent;
   movieController: number = 8;
   movies: MovieListItem[] = [];
-  filteredMovies!: MovieListItem[];
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movies = this.movieService.getMoviesForListPage();
-    this.filteredMovies = this.movies;
+    this.movies = this.movieService.getMoviesForListPage(this.movieController);
   }
 
   loadMoreMovies(): void {
-    this.movieController += 2;
+    const nextMovies = this.movieService.getMoreMovies(this.movieController, 8);
+    this.movies = [...this.movies, ...nextMovies];
+    this.movieController += 8;
   }
 
-  searchedMovie(event: string): void {
-    if (!event) {
-      this.filteredMovies = this.movies;
+  filterMovies(titleMovie: string): void {
+    console.log(titleMovie);
+    if (!titleMovie.trim()) {
+      this.movies = this.movieService.getMoviesForListPage(
+        this.movieController
+      );
     } else {
-      this.filteredMovies = this.filteredMovies.filter((movie) =>
-        movie.title.toLowerCase().includes(event.toLowerCase())
+      this.movies = this.movies.filter((movie) =>
+        movie.title.toLowerCase().includes(titleMovie.toLowerCase())
       );
     }
-    this.movieController = this.filteredMovies.length;
   }
 }

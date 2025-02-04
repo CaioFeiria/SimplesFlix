@@ -1,0 +1,17 @@
+<ul class="infoPages">
+  @for (item of previousRoutes; track $index) {
+    <li>
+      <a [routerLink]="item.href" class="previousPage">
+        <img [src]="item.icon" alt="Icon">
+        {{ item.path }}
+        <span> > </span>
+      </a>
+    </li>
+  }
+  <li>
+    <a [routerLink]="currentRoute.href" class="currentPage">
+      <img [src]="currentRoute.icon" alt="Icon" width="13" height="13">
+      {{ currentRoute.path }}
+    </a>
+  </li>
+</ul>

@@ -1,13 +1,17 @@
-div {
-  height: 100vh;
+section {
+  height: 96vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 
   h2 {
-    font-size: 55px;
+    font-size: 48px;
     font-weight: 600;
     color: rgb(57, 57, 57);
+    width: 450px;
+    margin: 0;
+    margin-right: 40px;
   }
 
   .yellow {

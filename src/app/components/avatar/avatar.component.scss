@@ -1,0 +1,44 @@
+.myContainer {
+  display: flex;
+  align-items: center;
+
+  .divImg {
+    padding-right: 18px;
+
+    img {
+      border-radius: 150px;
+    }
+  }
+
+  .divName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #111827;
+  }
+
+  .desc {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+}
+
+.no-name-highlight {
+  font-weight: normal !important;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .desc {
+    font-size: 1.1rem !important;
+  }
+
+  .name {
+    font-size: 1.4rem;
+  }
+}

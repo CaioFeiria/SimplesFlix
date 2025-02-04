@@ -1,33 +1,97 @@
+.divHeader {
+  margin-left: 20px;
+}
+
 .myContainer {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem;
+  overflow: hidden;
 
-  .divCast {
-    margin-top: 23px;
+  .title {
+    padding-top: 25px;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+  }
 
-    h3 {
-      padding: 25px;
-      font-size: 26px;
-      font-weight: 600;
-    }
-    
-    background-color: white;
-    width: 551px;
-    height: 540px;
-    border-radius: 12px;
+  .secCastAndSinopsis {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    align-items: center;
 
-    .divButton {
+    .divCast {
       display: flex;
-      justify-content: end;
-      align-items: center;
-      margin-right: 23px;
-    
-      button {
-        background-color: #1d4ed8;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        padding: 16px 20px;
+      flex-direction: column;
+      margin-top: 5px;
+      padding-left: 40px;
+      background-color: white;
+      width: 551px;
+      height: 390px;
+      border-radius: 12px;
+      gap: 22px;
+      position: relative;
+
+      .divButton {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0;
+        position: absolute;
+        bottom: 10px;
+        right: 12px;
       }
     }
   }
+}
+
+// Media Queries
+@media (max-width: 769px) {
+  .myContainer {
+    flex-direction: column;
+    gap: 20px;
+
+    .secCastAndSinopsis {
+      .divCast {
+        width: 500px;
+      }
+
+      .divButton {
+        bottom: 5px;
+        right: 8px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .myContainer {
+    gap: 15px;
+    flex-wrap: nowrap;
+
+    .title {
+      font-size: 30px;  
+    }
+
+    .secCastAndSinopsis {
+      .divCast {
+        width: 520px;
+        height: 495px;
+        gap: 30px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1441px) {
+  .myContainer {
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1539px) {
+  /* Adicione futuras regras aqui */
 }

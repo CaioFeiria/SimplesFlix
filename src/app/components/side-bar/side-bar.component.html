@@ -1,16 +1,15 @@
 <nav class="sideBar">
   <div class="container-user">
-    <div>
-      <img src="assets/user.png" width="50" height="50" alt="Foto usuário">
-    </div>
-    <div>
-      <a class="navbar-brand" href="#">Stevezinho224</a>
-    </div>
+    <app-avatar 
+    photo="/assets/user.png"
+    name="Stevezinho224"
+    [isNameHighlighted]="false"
+    />
   </div>
   <div class="container-links">
     <div class="container-pages">
       <a routerLink="/" routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
-      <a routerLink="/movies" routerLinkActive="selected">Filmes</a>
+      <a routerLink="/movies" [class.selected]="isMoviesActive()" >Filmes</a>
     </div>
     <div class="container-outhers">
       <a href="">Configurações</a>

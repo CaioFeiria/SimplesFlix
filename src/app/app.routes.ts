@@ -19,7 +19,7 @@ export const routes: Routes = [
         component: MoviesComponent,
       },
       {
-        path: 'details/:title',
+        path: 'movie/:id',
         component: MovieDetailsComponent,
       },
     ],

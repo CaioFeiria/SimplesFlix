@@ -1,0 +1,11 @@
+<div class="myContainer">
+  <div class="divImg">
+    <img [src]="photo" alt="Foto" width="50" height="50"/>
+  </div>
+  <div class="divName">
+    <p class="name" [ngClass]="{ 'no-name-highlight': !isNameHighlighted }">{{ name }}</p>
+    <ng-container>
+      <p class="desc">{{ desc }}</p>
+    </ng-container>
+  </div>
+</div>

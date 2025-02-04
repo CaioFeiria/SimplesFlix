@@ -6,18 +6,23 @@
     <div class="divInfo">
       <div class="dateAndEvaluation">
         <div class="rating">
-          <img src="/assets/star.png" alt="Estrela" width="27" height="27">
-          <span>{{ rating }}</span>
+          <app-badge 
+            [label]="rating"
+            icon="/assets/star.png"
+            [isLargeBadge]="true"
+            [isTextHighlighted]="true"
+            sizeIcon="18"
+          />
         </div>
         <div class="description">
           <p>Dirigido por <strong>{{ director }}</strong></p>
           <p>{{ releaseDate }}</p>
         </div>
       </div>
-      <div [ngClass]="{ 'filmeGenre-space-between': genres.length >= 3, 'filmeGenre-center': genres.length < 3 }">
-        <span *ngFor="let genre of genres">
-          {{ genre }}
-        </span>
+      <div [ngClass]="genres.length >= 3 ? 'filmeGenre-space-between' : 'filmeGenre-center'">
+        <app-badge *ngFor="let genre of genres"
+          [label]="genre"
+        />
       </div>
     </div>
   </div>

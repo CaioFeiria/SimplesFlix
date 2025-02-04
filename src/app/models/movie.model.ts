@@ -1,4 +1,7 @@
+import { Cast } from '../types/cast';
+
 export type Movie = {
+  id: number;
   image: string;
   title: string;
   releaseDate: string;
@@ -6,5 +9,5 @@ export type Movie = {
   rating: string;
   synopsis: string;
   genres: string[];
-  cast: { character: string; actorName: string; actorImage: string }[];
+  cast: Cast[];
 };

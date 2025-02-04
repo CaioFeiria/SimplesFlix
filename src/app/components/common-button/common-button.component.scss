@@ -1,0 +1,19 @@
+div {
+  display: flex;
+  justify-content: center;
+
+  .btnCommon {
+    padding: 12px 13px;
+    border: none;
+    border-radius: 6px;
+    background-color: #1d4ed8;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+
+    @media (min-width: 1024px) {
+      font-size: 14px;
+    }
+  }
+}
+  

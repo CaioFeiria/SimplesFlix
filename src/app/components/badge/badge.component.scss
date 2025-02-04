@@ -1,0 +1,52 @@
+.communBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1d4ed8;
+  color: white;
+  width: 90px;
+  height: 40px;
+  border-radius: 6px;
+  gap: 10px;
+}
+
+.badgeLarge {
+  width: 120px;
+  height: 50px;
+}
+
+.normalText {
+  text-align: center;
+  margin-top: 2px;
+  font-size: 12.3px;
+}
+
+.textHighlighted {
+  font-size: 18px !important;
+  font-weight: 600;
+}
+
+@media (max-width: 1025px) {
+  .communBadge {
+    width: 100px;
+    height: 50px;
+
+    img {
+      width: 23px;
+      height: 23px;
+    }
+  }
+
+  .badgeLarge {
+    width: 125px;
+    height: 60px;
+  }
+
+  .normalText {
+    font-size: 15px;
+  }
+  
+  .textHighlighted {
+    font-size: 23px !important;
+  }
+}

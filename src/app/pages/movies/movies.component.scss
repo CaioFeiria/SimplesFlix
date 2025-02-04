@@ -1,25 +1,18 @@
-.divBtnLoad {
-  display: flex;
-  justify-content: center;
-  padding-top: 30px;
+// section {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   max-width: 80%;
+// }
 
-  .btnLoadMore {
-    padding: 14px 50px 14px 30px;
-    border: none;
-    border-radius: 6px;
-    background-color: #1d4ed8;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 500;
-    background-image: url("/assets/seta.png");
-    background-position: 100px center;
-    background-repeat: no-repeat;
-    background-size: 20px;
-  }
+.searchedMovies {
+  padding: 10px 0 16px 3px;
+  color: #4B5563;
+  font-size: 16px;
 }
 
 .divMovies {
-  padding: 32px 24px;
+  padding: 32px 20px;
 }
 
 .containerMovies {
@@ -27,7 +20,20 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  text-align: center;
   background-color: white;
   padding-bottom: 20px;
+  margin-top: 10px;
   border-radius: 10px;
+
+  .emptyMovies {
+    margin: 0; 
+    padding-top: 20px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+.divBtnLoad {
+  padding-top: 30px;
 }

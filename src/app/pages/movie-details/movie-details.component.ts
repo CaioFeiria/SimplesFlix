@@ -3,10 +3,13 @@ import { HeaderInformationComponent } from '../../components/header-information/
 import { CardDetailsMovieComponent } from '../../components/card-details-movie/card-details-movie.component';
 import { ActivatedRoute } from '@angular/router';
 import { SynopsisCardComponent } from '../../components/synopsis-card/synopsis-card.component';
-import { MovieCastCardComponent } from '../../components/movie-cast-card/movie-cast-card.component';
 import { CommonModule } from '@angular/common';
 import { MovieService } from '../../service/movie.service';
 import { Movie } from '../../models/movie.model';
+import { AvatarComponent } from '../../components/avatar/avatar.component';
+import { CommonButtonComponent } from '../../components/common-button/common-button.component';
+import { LoadMovie } from '../../types/loadMovie';
+import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-movie-details',
@@ -14,46 +17,51 @@ import { Movie } from '../../models/movie.model';
     HeaderInformationComponent,
     CardDetailsMovieComponent,
     SynopsisCardComponent,
-    MovieCastCardComponent,
     CommonModule,
+    AvatarComponent,
+    CommonButtonComponent,
+    BreadcrumbComponent,
   ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.scss',
 })
 export class MovieDetailsComponent implements OnInit {
-  imgMovie!: string;
-  releaseDate!: string;
-  sinopse!: string;
-  director!: string;
-  rating!: string;
-  genres!: string[];
-  title: string = '';
-  castDetails!: { actorName: string; character: string; actorImage: string }[];
-  movies: Movie[] = [];
+  movieDetails!: LoadMovie;
 
   constructor(
-    private route: ActivatedRoute,
-    private moviesService: MovieService
+    private activatedRoute: ActivatedRoute,
+    private movieService: MovieService
   ) {}
 
   ngOnInit(): void {
-    const titleParam = this.route.snapshot.params['title'];
-    this.title = decodeURIComponent(titleParam);
-    this.movies = this.moviesService.getMovies();
-    this.movies.forEach((element) => {
-      if (element.title == this.title) {
-        this.imgMovie = element.image;
-        this.releaseDate = element.releaseDate;
-        this.sinopse = element.synopsis;
-        this.director = element.director;
-        this.rating = element.rating;
-        this.genres = element.genres;
-        this.castDetails = element.cast.map((actor) => ({
-          actorName: actor.actorName,
-          character: actor.character,
-          actorImage: actor.actorImage,
-        }));
-      }
-    });
+    this.loadMovie();
+  }
+
+  loadMovie(): void {
+    const idParam = this.activatedRoute.snapshot.params['id'];
+    const movie = this.movieService.getMovieById(idParam);
+    if (movie) {
+      this.setMovieProperties(movie);
+    }
+  }
+
+  setMovieProperties(movie: Movie): void {
+    this.movieDetails = {
+      id: movie.id,
+      title: movie.title,
+      imgMovie: movie.image,
+      releaseDate: movie.releaseDate,
+      sinopse: movie.synopsis,
+      director: movie.director,
+      rating: movie.rating,
+      genres: movie.genres,
+      castDetails: movie.cast.map(({ actorName, character, actorImage }) => ({
+        actorName,
+        character,
+        actorImage,
+      })),
+      movie: movie,
+    };
+    console.log(this.movieDetails.id);
   }
 }

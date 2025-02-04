@@ -8,6 +8,7 @@ import { MovieListItem } from '../types/movieListItem';
 export class MovieService {
   private movies: Movie[] = [
     {
+      id: 1,
       image: 'assets/a-teia.png',
       title: 'A Teia',
       releaseDate: '22 de março de 2024',
@@ -40,6 +41,7 @@ export class MovieService {
       ],
     },
     {
+      id: 2,
       image: 'assets/alerta-vermelho.png',
       title: 'Alerta Vermelho',
       releaseDate: '4 de novembro de 2021',
@@ -72,6 +74,7 @@ export class MovieService {
       ],
     },
     {
+      id: 3,
       image: 'assets/desapega.png',
       title: 'Desapega',
       releaseDate: '1 de dezembro de 2022',
@@ -104,6 +107,7 @@ export class MovieService {
       ],
     },
     {
+      id: 4,
       image: 'assets/deu-preguica.png',
       title: 'Deu Preguiça',
       releaseDate: '2 de fevereiro de 2025',
@@ -136,6 +140,7 @@ export class MovieService {
       ],
     },
     {
+      id: 5,
       image: 'assets/no-olho-do-furacao.png',
       title: 'No Olho do Furacão',
       releaseDate: '7 de junho de 2018',
@@ -168,6 +173,7 @@ export class MovieService {
       ],
     },
     {
+      id: 6,
       image: 'assets/o-auto-da-boa-mentira.png',
       title: 'Auto da Boa Mentira',
       releaseDate: '15 de abril de 2021',
@@ -200,6 +206,7 @@ export class MovieService {
       ],
     },
     {
+      id: 7,
       image: 'assets/paddington2.png',
       title: 'Paddington 2',
       releaseDate: '9 de novembro de 2017',
@@ -232,6 +239,7 @@ export class MovieService {
       ],
     },
     {
+      id: 8,
       image: 'assets/refem-do-jogo.png',
       title: 'Refém do Jogo',
       releaseDate: '22 de novembro de 2018',
@@ -264,6 +272,7 @@ export class MovieService {
       ],
     },
     {
+      id: 9,
       image: 'assets/silvio.png',
       title: 'Silvio',
       releaseDate: '12 de setembro de 2024',
@@ -296,6 +305,7 @@ export class MovieService {
       ],
     },
     {
+      id: 10,
       image: 'assets/terrifier2.png',
       title: 'Terrifier 2',
       releaseDate: '6 de outubro de 2022',
@@ -333,11 +343,22 @@ export class MovieService {
     return this.movies;
   }
 
-  getMoviesForListPage(): MovieListItem[] {
-    return this.movies.map(({ image, title, releaseDate }) => ({
+  getMovieById(id: number): Movie {
+    let movie = this.movies.find((movie) => movie.id == id);
+    return movie!;
+  }
+
+  getMoviesForListPage(quantityToBeLoaded?: number): MovieListItem[] {
+    let movies = this.movies.map(({ id, image, title, releaseDate }) => ({
+      id,
       image,
       title,
       releaseDate,
     }));
+    return movies.slice(0, quantityToBeLoaded);
+  }
+
+  getMoreMovies(startIndex: number, quantityToBeLoaded: number): Movie[] {
+    return this.movies.slice(startIndex, startIndex + quantityToBeLoaded);
   }
 }
