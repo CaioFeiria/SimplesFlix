@@ -68,7 +68,7 @@
 
 @media (min-width: 1024px) {
   .myContainer {
-    gap: 15px;
+    gap: 20px;
     flex-wrap: nowrap;
 
     .title {
@@ -77,7 +77,7 @@
 
     .secCastAndSinopsis {
       .divCast {
-        width: 520px;
+        width: 440px;
         height: 495px;
         gap: 30px;
       }
@@ -85,13 +85,59 @@
   }
 }
 
-@media (min-width: 1441px) {
+@media (min-width: 1440px) {
   .myContainer {
-    flex-wrap: nowrap;
     gap: 20px;
+    flex-wrap: nowrap;
+
+    .title {
+      font-size: 28px;  
+    }
+
+    .secCastAndSinopsis {
+      .divCast {
+        width: 31rem;
+        height: 455px;
+        gap: 30px;
+      }
+    }
   }
 }
 
-@media (min-width: 1539px) {
-  /* Adicione futuras regras aqui */
+@media (min-width: 1530px) {
+  .myContainer {
+    gap: 55px;
+    flex-wrap: nowrap;
+
+    .title {
+      font-size: 24px;  
+    }
+
+    .secCastAndSinopsis {
+      .divCast {
+        width: 36rem;
+        height: 325px;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1900px) {
+  .myContainer {
+    gap: 70px;
+    flex-wrap: nowrap;
+
+    .title {
+      font-size: 33px;  
+    }
+
+    .secCastAndSinopsis {
+      .divCast {
+        width: 46rem;
+        height: 29.7rem;
+        gap: 20px;
+      }
+    }
+  }
 }

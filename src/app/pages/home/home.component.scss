@@ -22,3 +22,23 @@ section {
     color: #024BAA;
   }
 }
+
+@media (max-width: 426px) {
+  section {
+    margin-top: 15rem;
+    flex-direction: column;
+    padding: 0;
+    height: 50vh;
+  
+    h2 {
+      font-size: 30px;
+      width: 370px;
+      margin: 0;
+    }
+
+    img {
+      width: 250px;
+      height: 250px;
+    }
+  }
+}

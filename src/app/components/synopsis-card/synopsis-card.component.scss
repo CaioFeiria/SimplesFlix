@@ -32,21 +32,98 @@ section {
   section {
     width: 500px;
   }
+
+  section .divTitle h3 {
+    padding-top: 0px;
+    font-size: 22px;
+    margin: 0;
+  }
+
+  section .divSinopse p {
+    padding-top: 0px;
+    font-size: 14px;
+  }
+
+  section .divSinopse {
+    padding-top: 7px;
+  }
 }
 
 @media (min-width: 1024px) {
   section {
-    width: 520px;
-    height: 362px;
+    width: 440px;
+    height: 322px;
   }
 
   section .divTitle h3 {
-    padding-top: 30px;
+    padding-top: 10px;
     padding-bottom: 13px;
     font-size: 29px;
   }
 
   section .divSinopse p {
     font-size: 18px;
+  }
+}
+
+@media (min-width: 1440px) {
+  section {
+    width: 31rem;
+    height: 195px;
+  }
+
+  section .divTitle h3 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 25px;
+  }
+
+  section .divSinopse p {
+    font-size: 15px;
+  }
+
+  section .divSinopse {
+    padding-top: 5px;
+  }
+}
+
+@media (min-width: 1530px) {
+  section {
+    width: 36rem;
+    height: 195px;
+  }
+
+  section .divTitle h3 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 25px;
+  }
+
+  section .divSinopse p {
+    font-size: 15px;
+  }
+
+  section .divSinopse {
+    padding-top: 5px;
+  }
+}
+
+@media (min-width: 1900px) {
+  section {
+    width: 46rem;
+    height: 253px;
+  }
+
+  section .divTitle h3 {
+    padding-top: 20px;
+    font-size: 29px;
+  }
+
+  section .divSinopse p {
+    font-size: 18px;
+  }
+
+  section .divSinopse {
+    padding-top: 5px;
   }
 }
