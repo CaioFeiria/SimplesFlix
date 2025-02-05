@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 import { HeaderInformationComponent } from '../../components/header-information/header-information.component';
 import { SearchComponent } from '../../components/search/search.component';
@@ -29,6 +29,7 @@ export class MoviesComponent {
   encodeURIComponent = encodeURIComponent;
   movieController: number = 8;
   movies: MovieListItem[] = [];
+  count = signal(8);
 
   constructor(private movieService: MovieService) {}
 
@@ -48,10 +49,12 @@ export class MoviesComponent {
       this.movies = this.movieService.getMoviesForListPage(
         this.movieController
       );
+      this.count.update((v) => (v = this.movies.length));
     } else {
       this.movies = this.movies.filter((movie) =>
         movie.title.toLowerCase().includes(titleMovie.toLowerCase())
       );
+      this.count.update((v) => (v = this.movies.length));
     }
   }
 }

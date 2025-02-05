@@ -8,6 +8,11 @@
     border-radius: 10px;
   }
 
+  @media (min-width: 1900px) {
+    height: 420px;
+    width: 290px;
+  }
+
   .card-body {
     padding: 10px 0 0 2px;
     display: flex;
