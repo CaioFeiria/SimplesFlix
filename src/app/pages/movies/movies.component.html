@@ -15,18 +15,18 @@
   </div>
   <div>
     <app-search 
-     (searched)="filterMovies($event)"
     />
-    <p class="searchedMovies">{{ count() }} filmes listados</p>
+    <!-- (searched)="filterMovies($event)" -->
+    <p class="searchedMovies">{{ count() }} filme(s) listado(s)</p>
   </div>
   <div class="containerMovies">
     <ng-content *ngIf="movies.length > 0; else emptyMovies">
       @for (movie of movies; track $index) {
         <div class="divMovies">
             <app-movie-card
-              [image]="movie.image"
+              [image]="movie.poster_path"
               [movieTitle]="movie.title"
-              [releaseDate]="movie.releaseDate"
+              [releaseDate]="movie.release_date" 
               [routerLink]="['/movie', movie.id]" 
             />
         </div>

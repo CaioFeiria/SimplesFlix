@@ -1,12 +1,6 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -16,9 +10,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchComponent {
   search: string = '';
-  @Output() searched = new EventEmitter<string>();
 
-  searchChanges(): void {
-    this.searched.emit(this.search);
-  }
+  searchTermSubject = new Subject<string>();
+  searchTerm$ = this.searchTermSubject.asObservable();
+
+  // @Output() searched = new EventEmitter<string>();
+
+  // searchChanges(): void {
+  //   this.searched.emit(this.search);
+  // }
 }

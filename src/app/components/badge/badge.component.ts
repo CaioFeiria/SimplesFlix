@@ -8,10 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrl: './badge.component.scss',
 })
 export class BadgeComponent implements OnInit {
-  @Input() label!: string;
+  @Input() label!: string | null;
   @Input() icon: string = '';
   @Input() isLargeBadge: boolean = false;
+  @Input() isSmallBadge: boolean = false;
   @Input() isTextHighlighted: boolean = false;
+  @Input() moreThanThree: boolean = false;
   widthIcon: string = '10';
   heightIcon: string = '10';
   @Input() sizeIcon!: string;

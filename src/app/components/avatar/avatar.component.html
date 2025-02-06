@@ -1,6 +1,9 @@
 <div class="myContainer">
   <div class="divImg">
-    <img [src]="photo" alt="Foto" width="50" height="50"/>
+    <img *ngIf="photoLocal, else photoAPI" [src]="photo" alt="Foto" width="50" height="50"/>
+    <ng-template #photoAPI>
+      <img [src]="'https://image.tmdb.org/t/p/original/' + photo" alt="Foto" width="50" height="50"/>
+    </ng-template>
   </div>
   <div class="divName">
     <p class="name" [ngClass]="{ 'no-name-highlight': !isNameHighlighted }">{{ name }}</p>

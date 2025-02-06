@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { BadgeComponent } from '../badge/badge.component';
+import { Directing } from '../../types/directing';
+import { Genres } from '../../types/genres';
 
 @Component({
   selector: 'app-card-details-movie',
@@ -12,6 +14,6 @@ export class CardDetailsMovieComponent {
   @Input() imgMovie!: string;
   @Input() releaseDate!: string;
   @Input() rating!: string;
-  @Input() director!: string;
-  @Input() genres!: string[];
+  @Input() director!: Directing[];
+  @Input() genres!: Genres[];
 }

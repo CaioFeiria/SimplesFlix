@@ -13,31 +13,52 @@
   [movieTitle]="movieDetails.title"
 />
 </div>
+<ng-container *ngIf="exibirModal">
+  <app-modal-container>
+    <div app-modal-title class="modal-title">  
+      <h2>Elenco</h2>
+    </div>
+    <div app-modal-body class="modal-body">    
+      <app-avatar *ngFor="let person of outherCasts"
+          [name]="person.name"
+          [desc]="person.character"
+          [photo]="person.profile_path"
+        />
+    </div>
+    <div app-modal-footer class="modal-footer">    
+      <app-common-button 
+        label="Fechar"
+        (click)="loadModal()"
+      />
+    </div>
+  </app-modal-container>
+</ng-container>
 <section class="myContainer">
-    <app-card-details-movie 
-      [imgMovie]="movieDetails.imgMovie"
-      [releaseDate]="movieDetails.releaseDate"
-      [director]="movieDetails.director"
-      [rating]="movieDetails.rating"
+    <app-card-details-movie
+      [imgMovie]="movieDetails.poster_path"
+      [releaseDate]="movieDetails.release_date"
+      [director]="firstDirector"
+      [rating]="movieDetails.vote_average"
       [genres]="movieDetails.genres"
     />
     <section class="secCastAndSinopsis">
       <div class="divCast">
         <h3 class="title">Elenco</h3>
-        <app-avatar *ngFor="let cast of movieDetails.castDetails"
-          [name]="cast.actorName"
-          [desc]="cast.character"
-          [photo]="cast.actorImage"
-        />    
+        <app-avatar *ngFor="let person of casts"
+          [name]="person.name"
+          [desc]="person.character"
+          [photo]="person.profile_path"
+        />
         <div class="divButton">
           <app-common-button 
             label="Ver mais +"
+            (click)="loadModal(); loadMoreCasts()"
           />
         </div>
       </div>
       <div>
         <app-synopsis-card 
-          [sinopse]="movieDetails.sinopse"
+          [sinopse]="movieDetails.overview"
         /> 
       </div>
   </section>

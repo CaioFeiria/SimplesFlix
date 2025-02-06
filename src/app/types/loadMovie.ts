@@ -1,15 +1,14 @@
-import { Movie } from '../models/movie.model';
-import { Cast } from './cast';
+import { Genres } from './genres';
 
 export type LoadMovie = {
   id: number;
-  imgMovie: string;
-  releaseDate: string;
-  sinopse: string;
+  poster_path: string;
+  release_date: string;
+  overview: string;
   director: string;
-  rating: string;
-  genres: string[];
+  vote_average: string;
+  genres: Genres[];
   title: string;
-  castDetails: Cast[];
-  movie: Movie;
+  // castDetails: Cast[];
+  // movie: Movie;
 };

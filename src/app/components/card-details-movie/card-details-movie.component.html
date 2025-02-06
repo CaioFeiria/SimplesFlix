@@ -1,27 +1,33 @@
 <main class="myContainer">
   <div class="movieCard">
     <div class="divImg">
-      <img [src]="imgMovie" alt="Capa Filme">
+      <img [src]="'https://image.tmdb.org/t/p/original/' + imgMovie" alt="Capa Filme">
     </div>
     <div class="divInfo">
       <div class="dateAndEvaluation">
         <div class="rating">
           <app-badge 
-            [label]="rating"
+            [label]="rating | number: '1.0-1' : 'en-US'"
             icon="/assets/star.png"
             [isLargeBadge]="true"
             [isTextHighlighted]="true"
-            sizeIcon="18"
+            sizeIcon="17"
           />
         </div>
         <div class="description">
-          <p>Dirigido por <strong>{{ director }}</strong></p>
-          <p>{{ releaseDate }}</p>
+          <p *ngFor="let person of director">
+            Dirigido por 
+            <strong>
+              {{ person.name }}
+            </strong></p>
+          <p>{{ releaseDate | date:'longDate'}}</p>
         </div>
       </div>
       <div [ngClass]="genres.length >= 3 ? 'filmeGenre-space-between' : 'filmeGenre-center'">
         <app-badge *ngFor="let genre of genres"
-          [label]="genre"
+          [label]="genre.name"
+          [moreThanThree]="genres.length > 3 ? true : false"
+          [isSmallBadge]="genres.length > 3 ? true : false"
         />
       </div>
     </div>

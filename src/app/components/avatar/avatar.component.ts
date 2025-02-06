@@ -12,4 +12,5 @@ export class AvatarComponent {
   @Input() photo!: string;
   @Input() desc?: string;
   @Input() isNameHighlighted: boolean = true;
+  @Input() photoLocal: boolean = false;
 }

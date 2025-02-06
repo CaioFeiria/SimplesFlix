@@ -2,6 +2,23 @@
   margin-left: 20px;
 }
 
+.modal-title {
+  padding: 10px;
+  border-bottom: 1px solid #ddd; /* Linha separadora abaixo do título */
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-footer {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  text-align: right;
+}
+
 .myContainer {
   display: flex;
   flex-wrap: wrap;

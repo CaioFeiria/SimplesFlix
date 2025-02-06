@@ -1,0 +1,8 @@
+<div class="modal">
+  <span class="btnClose" (click)="fechar()">&times;</span>
+  <div class="modal-content">
+    <ng-content select="[app-modal-title]"></ng-content>
+    <ng-content select="[app-modal-body]"></ng-content>
+    <ng-content select="[app-modal-footer]"></ng-content>
+  </div>
+</div>

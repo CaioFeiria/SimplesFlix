@@ -1,6 +1,6 @@
 export type MovieListItem = {
   id: number;
-  image: string;
+  poster_path: string;
   title: string;
-  releaseDate: string;
+  release_date: string;
 };
