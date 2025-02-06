@@ -11,8 +11,8 @@ export class ModalContainerComponent {
   @Input() visivel: boolean = false;
   @Output() visivelChange = new EventEmitter<boolean>();
 
-  fechar() {
-    this.visivel = false;
+  close() {
+    this.visivel = !this.visivel;
     this.visivelChange.emit(this.visivel);
   }
 }

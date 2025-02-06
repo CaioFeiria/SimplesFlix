@@ -14,7 +14,9 @@
 />
 </div>
 <ng-container *ngIf="exibirModal">
-  <app-modal-container>
+  <app-modal-container
+    (visivelChange)="loadModal()"
+  >
     <div app-modal-title class="modal-title">  
       <h2>Elenco</h2>
     </div>
