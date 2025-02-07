@@ -10,7 +10,7 @@ export class ObservableSearchService {
   searched$ = new Subject<string>();
 
   outputSearchedValue(value: string): void {
-    console.log(value);
+    console.log('Observable: ', value);
     this.searched$.next(value);
   }
 }

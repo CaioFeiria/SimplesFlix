@@ -1,3 +1,8 @@
 <section>
-  <input type="text" [ngModel]="search" (ngModelChange)="searchTermSubject.next(search)" placeholder="Busque um filme...">
+  <input
+    type="text"
+    [ngModel]="search"
+    (input)="searched()"
+    placeholder="Busque um filme..."
+  />
 </section>

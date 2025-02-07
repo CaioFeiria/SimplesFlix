@@ -15,11 +15,16 @@
           />
         </div>
         <div class="description">
-          <p *ngFor="let person of director">
+          <p>
             Dirigido por 
+          @for (person of director; track $index) {
             <strong>
+              <span *ngIf="$index != 0">,</span>
               {{ person.name }}
-            </strong></p>
+            </strong>
+          }
+          <strong>.</strong>
+        </p>
           <p>{{ releaseDate | date:'longDate'}}</p>
         </div>
       </div>

@@ -34,8 +34,7 @@ export class MovieDetailsComponent implements OnInit {
   casts: Array<Cast> = [];
   outherCasts: Array<Cast> = [];
   fourFirts: Array<Cast> = [];
-  directors!: Directing[];
-  firstDirector!: Directing[];
+  director!: Directing[];
   idParam: string = '';
   exibirModal = false;
 
@@ -65,13 +64,12 @@ export class MovieDetailsComponent implements OnInit {
           }
         }
         if (res.crew) {
-          this.directors = res.crew.filter((person: Directing) => {
-            return person.known_for_department === 'Directing';
+          this.director = res.crew.filter((person: Directing) => {
+            return person.job === 'Director';
           });
-          this.firstDirector = this.directors.slice(0, 1);
         }
         console.log('4 PRIMEIROS: ', this.casts);
-        console.log('DIRETOR: ', this.firstDirector);
+        console.log('DIRETOR: ', this.director);
       },
     });
   }

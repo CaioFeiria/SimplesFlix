@@ -7,6 +7,10 @@
 .divMovies {
   height: 500px;
   padding: 32px 20px 30px 20px;
+
+  @media (min-width: 1900px) {
+    margin-bottom: 40px;
+  }
 }
 
 .containerMovies {
@@ -20,7 +24,7 @@
   border-radius: 10px;
 
   @media (min-width: 1900px) {
-    padding-bottom: 55px;
+    padding-bottom: 90px;
     gap: 20px;
   }
 
