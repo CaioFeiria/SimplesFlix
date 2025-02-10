@@ -7,6 +7,8 @@ import {
 } from '@angular/router';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { CommonModule } from '@angular/common';
+import { LanguageSelectorService } from '../../service/language-selector.service';
+import { LanguageForApplication } from '../../types/languageApplication';
 
 @Component({
   selector: 'app-side-bar',
@@ -14,8 +16,19 @@ import { CommonModule } from '@angular/common';
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss',
 })
-export class SideBarComponent {
-  constructor(private router: Router) {}
+export class SideBarComponent implements OnInit {
+  languageApplicationCurrent!: LanguageForApplication;
+
+  constructor(
+    private router: Router,
+    private languageService: LanguageSelectorService
+  ) {}
+
+  ngOnInit(): void {
+    this.languageApplicationCurrent =
+      this.languageService.getLanguageApplication();
+    console.log(this.languageApplicationCurrent);
+  }
 
   isMoviesActive(): boolean {
     return this.router.url.startsWith('/movie');

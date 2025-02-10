@@ -15,11 +15,11 @@ import { LanguageSelectorService } from '../../service/language-selector.service
 export class LanguageSelector implements OnInit {
   languageActive!: string;
   flag!: string;
-  @Output() languageSelect = new EventEmitter<Language>();
   languageEnum = Language;
   languageDetailsEnum = languageDetails;
   codeLanguage!: string;
   currentLanguage: Language;
+  @Output() languageSelect = new EventEmitter<Language>();
 
   constructor(private languageService: LanguageSelectorService) {
     this.codeLanguage = this.languageService.getCode();
