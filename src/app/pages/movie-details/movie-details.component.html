@@ -1,14 +1,16 @@
 <div class="divHeader">
-  <app-breadcrumb 
-    [previousRoutes]="[
-        { icon: '/assets/icons/home.svg', path: 'Início', href: '/' },
-        { icon: '/assets/icons/movie.svg', path: 'Filmes', href: '/movies' }
-    ]"
+  <div class="divBreadAndLang">
+    <app-breadcrumb 
+      [previousRoutes]="[
+          { icon: '/assets/icons/home.svg', path: 'Início', href: '/' },
+          { icon: '/assets/icons/movie.svg', path: 'Filmes', href: '/movies' }
+      ]"
 
-    [currentRoute]="
-        { icon: '/assets/icons/info.png', path: movieDetails.title, href: '/movie/' + movieDetails.id }
-    "
-    />
+      [currentRoute]="
+          { icon: '/assets/icons/info.png', path: movieDetails.title, href: '/movie/' + movieDetails.id }
+      "
+      />
+    </div>
   <app-header-information 
   [movieTitle]="movieDetails.title"
 />
@@ -60,7 +62,7 @@
       </div>
       <div>
         <app-synopsis-card 
-          [sinopse]="movieDetails.overview"
+          [sinopse]="movieDetails.overview ? movieDetails.overview : 'Não possui sinopse'"
         /> 
       </div>
   </section>

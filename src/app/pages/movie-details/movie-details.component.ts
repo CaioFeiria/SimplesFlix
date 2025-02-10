@@ -12,7 +12,7 @@ import { AvatarComponent } from '../../components/avatar/avatar.component';
 import { Cast } from '../../types/cast';
 import { Directing } from '../../types/directing';
 import { ModalContainerComponent } from '../../components/modal/modal-container/modal-container.component';
-import { EventInfoWrapper } from '@angular/core/primitives/event-dispatch';
+import { LanguageSelectorService } from '../../service/language-selector.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -40,7 +40,8 @@ export class MovieDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private languageService: LanguageSelectorService
   ) {}
 
   ngOnInit(): void {
@@ -49,40 +50,46 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   loadMovie(idParam: string): void {
-    this.movieService.getMovieById('pt-BR', idParam).subscribe({
-      next: (res) => {
-        this.movieDetails = res;
-      },
-    });
-    this.movieService.getCredtisMovieById('pt-BR', idParam).subscribe({
-      next: (res) => {
-        console.log(res);
-        if (res.cast) {
-          this.fourFirts = [...res.cast.slice(0, 4)];
-          for (let person of this.fourFirts) {
-            this.casts.push(person);
+    this.movieService
+      .getMovieById(this.languageService.getCode(), idParam)
+      .subscribe({
+        next: (res) => {
+          this.movieDetails = res;
+        },
+      });
+    this.movieService
+      .getCredtisMovieById(this.languageService.getCode(), idParam)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res.cast) {
+            this.fourFirts = [...res.cast.slice(0, 4)];
+            for (let person of this.fourFirts) {
+              this.casts.push(person);
+            }
           }
-        }
-        if (res.crew) {
-          this.director = res.crew.filter((person: Directing) => {
-            return person.job === 'Director';
-          });
-        }
-        console.log('4 PRIMEIROS: ', this.casts);
-        console.log('DIRETOR: ', this.director);
-      },
-    });
+          if (res.crew) {
+            this.director = res.crew.filter((person: Directing) => {
+              return person.job === 'Director';
+            });
+          }
+          console.log('4 PRIMEIROS: ', this.casts);
+          console.log('DIRETOR: ', this.director);
+        },
+      });
   }
 
   loadMoreCasts(): void {
-    this.movieService.getCredtisMovieById('pt-BR', this.idParam).subscribe({
-      next: (res) => {
-        if (res.cast) {
-          this.outherCasts = res.cast.slice(this.fourFirts.length);
-        }
-        console.log('TODOS OS CASTS: ', this.loadMoreCasts);
-      },
-    });
+    this.movieService
+      .getCredtisMovieById(this.languageService.getCode(), this.idParam)
+      .subscribe({
+        next: (res) => {
+          if (res.cast) {
+            this.outherCasts = res.cast.slice(this.fourFirts.length);
+          }
+          console.log('TODOS OS CASTS: ', this.loadMoreCasts);
+        },
+      });
   }
 
   loadModal(): void {

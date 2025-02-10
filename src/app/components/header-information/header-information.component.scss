@@ -1,3 +1,9 @@
+.divContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .divTitle h2 {
   padding-top: 4px;
   font-size: 27px;

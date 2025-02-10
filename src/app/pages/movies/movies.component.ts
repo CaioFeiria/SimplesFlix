@@ -11,6 +11,13 @@ import { FormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { ObservableSearchService } from '../../service/observable-search.service';
 import { Subscription } from 'rxjs';
+import { LanguageSelectorService } from '../../service/language-selector.service';
+import {
+  Language,
+  LanguageDetails,
+  languageDetails,
+} from '../../enums/language.enum';
+import { LanguageSelector } from '../../components/language-selector/language-selector.component';
 
 @Component({
   selector: 'app-movies',
@@ -23,6 +30,7 @@ import { Subscription } from 'rxjs';
     CommonButtonComponent,
     FormsModule,
     BreadcrumbComponent,
+    LanguageSelector,
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',
@@ -33,25 +41,35 @@ export class MoviesComponent implements OnDestroy {
   movies: Array<MovieListItem> = [];
   moviesBackup: Array<MovieListItem> = [];
   count = signal(1);
+  currentLanguage!: Language;
   private subscription!: Subscription;
 
   constructor(
     private movieService: MovieService,
-    private observerService: ObservableSearchService
+    private observerService: ObservableSearchService,
+    private languageService: LanguageSelectorService
   ) {}
 
   ngOnInit(): void {
-    this.movieService.getPopularMovies('pt-BR', 1).subscribe({
-      next: (res) => {
-        console.log(res.results);
-        this.movies = res.results;
-        this.moviesBackup = res.results;
-        this.count.set(res.results.length);
-      },
-      error: (err) => {
-        console.error(err);
-      },
-    });
+    this.currentLanguage = this.languageService.getLanguage();
+    this.loadMovies();
+  }
+
+  loadMovies(): void {
+    console.log('CURRENT', this.currentLanguage);
+    this.movieService
+      .getPopularMovies(this.languageService.getCode(), 1)
+      .subscribe({
+        next: (res) => {
+          console.log(res.results);
+          this.movies = res.results;
+          this.moviesBackup = res.results;
+          this.count.set(res.results.length);
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
     this.subscription = this.observerService.searched$.subscribe((value) => {
       if (!value.trim()) {
         this.movies = this.moviesBackup;
@@ -63,6 +81,12 @@ export class MoviesComponent implements OnDestroy {
         this.count.update((v) => (v = this.movies.length));
       }
     });
+  }
+
+  getCurrentLanguage(event: Language): void {
+    this.currentLanguage = event;
+    this.languageService.setCodeLanguage(event);
+    this.loadMovies();
   }
 
   loadMoreMovies(): void {
