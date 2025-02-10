@@ -13,6 +13,9 @@ import { Cast } from '../../types/cast';
 import { Directing } from '../../types/directing';
 import { ModalContainerComponent } from '../../components/modal/modal-container/modal-container.component';
 import { LanguageSelectorService } from '../../service/language-selector.service';
+import { Review } from '../../types/review';
+import { ReviewsApiService } from '../../service/reviews-api.service';
+import { ReviewCardComponent } from '../../components/review-card/review-card.component';
 
 @Component({
   selector: 'app-movie-details',
@@ -25,6 +28,7 @@ import { LanguageSelectorService } from '../../service/language-selector.service
     BreadcrumbComponent,
     AvatarComponent,
     ModalContainerComponent,
+    ReviewCardComponent,
   ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.scss',
@@ -37,16 +41,19 @@ export class MovieDetailsComponent implements OnInit {
   director!: Directing[];
   idParam: string = '';
   exibirModal = false;
+  reviews: Review[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
-    private languageService: LanguageSelectorService
+    private languageService: LanguageSelectorService,
+    private reviewService: ReviewsApiService
   ) {}
 
   ngOnInit(): void {
     this.idParam = this.activatedRoute.snapshot.params['id'];
     this.loadMovie(this.idParam);
+    this.loadReviews(this.idParam);
   }
 
   loadMovie(idParam: string): void {
@@ -97,23 +104,38 @@ export class MovieDetailsComponent implements OnInit {
     console.log(this.exibirModal);
   }
 
-  // setMovieProperties(movie: Movie): void {
-  //   this.movieDetails = {
-  //     id: movie.id,
-  //     title: movie.title,
-  //     imgMovie: movie.image,
-  //     releaseDate: movie.releaseDate,
-  //     sinopse: movie.synopsis,
-  //     director: movie.director,
-  //     rating: movie.rating,
-  //     genres: movie.genres,
-  //     castDetails: movie.cast.map(({ actorName, character, actorImage }) => ({
-  //       actorName,
-  //       character,
-  //       actorImage,
-  //     })),
-  //     movie: movie,
-  //   };
-  //   console.log(this.movieDetails.id);
-  // }
+  loadReviews(idParam: string): void {
+    this.reviewService.getUsers().subscribe({
+      next: (review) => {
+        console.log('Todos reviews: ', review);
+        this.reviews = review.filter((rev) => rev.movieId == Number(idParam));
+        console.log('Reviews desse filme: ', this.reviews);
+      },
+    });
+  }
 }
+
+// addStars(star: number): void {
+//   for (let i = 0; i < star; i++) {
+//     this.stars.push(star);
+//   }
+
+// setMovieProperties(movie: Movie): void {
+//   this.movieDetails = {
+//     id: movie.id,
+//     title: movie.title,
+//     imgMovie: movie.image,
+//     releaseDate: movie.releaseDate,
+//     sinopse: movie.synopsis,
+//     director: movie.director,
+//     rating: movie.rating,
+//     genres: movie.genres,
+//     castDetails: movie.cast.map(({ actorName, character, actorImage }) => ({
+//       actorName,
+//       character,
+//       actorImage,
+//     })),
+//     movie: movie,
+//   };
+//   console.log(this.movieDetails.id);
+// }

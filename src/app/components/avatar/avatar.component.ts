@@ -15,6 +15,10 @@ export class AvatarComponent {
   @Input() desc?: string;
   @Input() isNameHighlighted: boolean = true;
   @Input() photoLocal: boolean = false;
+  @Input() withDescription: boolean = true;
+  @Input() sizeImg: string = '';
+  widthImg: string = '50';
+  heightImg: string = '50';
   languageApplicationCurrent!: LanguageForApplication;
 
   constructor(private languageService: LanguageSelectorService) {}
@@ -22,6 +26,11 @@ export class AvatarComponent {
   ngOnInit(): void {
     this.languageApplicationCurrent =
       this.languageService.getLanguageApplication();
-    console.log(this.languageApplicationCurrent);
+    this.sizeImgFn(this.sizeImg);
+  }
+
+  sizeImgFn(size: string): void {
+    this.widthImg = size;
+    this.heightImg = size;
   }
 }

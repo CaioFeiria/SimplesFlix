@@ -67,3 +67,15 @@
       </div>
   </section>
 </section>
+<section class="divReviews">
+  @for (item of reviews; track $index) {
+    <app-review-card 
+      [userPhoto]="item.userPhoto"
+      [author]="item.author"
+      [reviewContent]="item.reviewContent"
+      [rating]="item.rating"
+      [reviewDate]="item.reviewDate"
+      [watchedDate]="item.watchedDate"
+    />
+  }
+</section>
