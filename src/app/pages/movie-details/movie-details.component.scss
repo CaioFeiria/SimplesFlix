@@ -64,11 +64,51 @@
   }
 }
 
+.secRevAndForm{
+  display: flex;
+  width: 96%;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 25px;
+}
+
 .divReviews {
   padding: 20px 0px 10px 0px;
   margin-left: 30px;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+}
+
+.divForm {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    label {
+      font-weight: 500;
+    }
+
+    input {
+      border-radius: 6px;
+      border: 1px solid dimgrey;
+      font-size: 16px;
+      padding: 3px;
+      padding-left: 10px;
+      outline: #1D4ED8;
+      color: rgb(85, 85, 85);
+      margin-bottom: 10px;
+    }
+
+    input:focus {
+      border: 2px solid #1D4ED8;
+    }
+  }
 }
 
 // Media Queries

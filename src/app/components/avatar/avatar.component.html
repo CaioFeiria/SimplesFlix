@@ -1,20 +1,15 @@
 <div class="myContainer" *ngIf="photoLocal; else photoAPI">
   <div class="divImg">
-    <img [src]="photo" alt="Foto" 
-      [width]="widthImg"
-      [height]="heightImg" 
-    />
+    <img [src]="photo" alt="Foto" [width]="widthImg" [height]="heightImg" />
   </div>
-  @if (withDescription) {
-    <div class="divName">
-      <div class="name" [ngClass]="{ 'no-name-highlight': !isNameHighlighted }">
-        {{ languageApplicationCurrent.user }}
-      </div>
-      <ng-container>
-        <p class="desc">{{ desc }}</p>
-      </ng-container>
+  <div class="divName">
+    <div class="name" [ngClass]="{ 'no-name-highlight': !isNameHighlighted }">
+      {{ name }}
     </div>
-}
+    <ng-container>
+      <p class="desc">{{ desc }}</p>
+    </ng-container>
+  </div>
 </div>
 <ng-template #photoAPI>
   <div class="myContainer">

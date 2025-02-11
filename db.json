@@ -1,7 +1,7 @@
 {
   "reviews": [
     {
-      "id": 1,
+      "id": "1",
       "movieId": 939243,
       "author": "João Silva",
       "rating": 9,
@@ -11,7 +11,7 @@
       "userPhoto": "/assets/user.png"
     },
     {
-      "id": 2,
+      "id": "2",
       "movieId": 939243,
       "author": "Jonas Judson",
       "rating": 6.3,
@@ -21,7 +21,7 @@
       "userPhoto": "/assets/actors/ryan-reynolds.png"
     },
     {
-      "id": 3,
+      "id": "3",
       "movieId": 1241982,
       "author": "Louquinho da pipoca",
       "rating": 8,
@@ -29,6 +29,46 @@
       "reviewDate": "2025-02-10T14:30:00Z",
       "watchedDate": "2025-02-05T20:00:00Z",
       "userPhoto": "/assets/actors/rodrigo-faro.png"
+    },
+    {
+      "id": "b206",
+      "author": "Caio",
+      "reviewContent": "vale muito assistir!",
+      "rating": 8.4,
+      "watchedDate": "2025-01-31",
+      "movieId": 939243,
+      "reviewDate": "2025-02-11",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "b2c6",
+      "author": "Sandoval",
+      "reviewContent": "pra um desenho, até que é ok!",
+      "rating": 6,
+      "watchedDate": "2025-02-09",
+      "movieId": 939243,
+      "reviewDate": "2025-02-11",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "803d",
+      "author": "Caio Feiria",
+      "reviewContent": "Muito bom!",
+      "rating": 8.5,
+      "watchedDate": "2025-02-08",
+      "movieId": 1241982,
+      "reviewDate": "2025-02-11",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "cf95",
+      "author": "Sandoval",
+      "reviewContent": "Bom",
+      "rating": 6.3,
+      "watchedDate": "2025-01-26",
+      "movieId": 1241982,
+      "reviewDate": "2025-02-11",
+      "userPhoto": "/assets/userDefault.png"
     }
   ]
 }

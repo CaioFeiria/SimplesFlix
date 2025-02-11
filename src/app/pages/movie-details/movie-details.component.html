@@ -67,15 +67,47 @@
       </div>
   </section>
 </section>
-<section class="divReviews">
-  @for (item of reviews; track $index) {
-    <app-review-card 
-      [userPhoto]="item.userPhoto"
-      [author]="item.author"
-      [reviewContent]="item.reviewContent"
-      [rating]="item.rating"
-      [reviewDate]="item.reviewDate"
-      [watchedDate]="item.watchedDate"
-    />
-  }
+<section class="secRevAndForm">
+  <div class="divReviews">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        @for (item of reviews; track $index) {
+          <div class="swiper-slide">
+            <app-review-card 
+              [userPhoto]="item.userPhoto"
+              [author]="item.author"
+              [reviewContent]="item.reviewContent"
+              [rating]="item.rating"
+              [reviewDate]="item.reviewDate"
+              [watchedDate]="item.watchedDate"
+            />
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="divForm">
+    <h4>Adicione uma avaliação</h4>
+    <form [formGroup]="formReviews" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Nome</label>
+        <input type="text" formControlName="author" [(ngModel)]="nameModel" name="name" id="name">
+      </div>
+      <div>
+        <label for="review">Review</label>
+        <input type="text" formControlName="reviewContent" [(ngModel)]="reviewModel" name="review" id="review">
+      </div>
+      <div>
+        <label for="rating">Nota</label>
+        <input type="number" formControlName="rating" [(ngModel)]="ratingModel" name="rating" id="rating" placeholder="Ex: 7.6">
+      </div>
+      <div>
+        <label for="watchedDate">Assistido em</label>
+        <input type="date" formControlName="watchedDate" [(ngModel)]="watchedDateModel" name="watchedDate" id="watchedDate">
+      </div>
+      <app-common-button 
+        [label]="'Enviar'"
+      />
+    </form>
+  </div>
 </section>

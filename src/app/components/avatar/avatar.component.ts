@@ -12,7 +12,7 @@ import { LanguageForApplication } from '../../types/languageApplication';
 export class AvatarComponent {
   @Input() name!: string;
   @Input() photo!: string;
-  @Input() desc?: string;
+  @Input() desc?: string | null;
   @Input() isNameHighlighted: boolean = true;
   @Input() photoLocal: boolean = false;
   @Input() withDescription: boolean = true;

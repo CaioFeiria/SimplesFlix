@@ -2,20 +2,19 @@
   <div class="headerCard">
     <app-avatar
       [photoLocal]="true"
-      [withDescription]="false"
+      [name]="author"
+      [desc]="'Em: ' + (reviewDate | date: 'shortDate')"
       [photo]="userPhoto"
     />
-    <p>Review by <strong>{{ author }}</strong></p>
   </div>
   <div class="bodyCard">
-    <p>{{ reviewContent }}</p>
-  </div>
-  <div class="footerCard">
     <span>
       <img src="assets/star.png" alt="Icon Like" width="25">
-      <span>{{ rating }}</span>
+      <p>{{ rating }}</p>
     </span>
-    <div>Data review: {{ reviewDate | date:'mediumDate'}}</div>
-    <div>Data assistiu o filme: {{ watchedDate | date:'mediumDate'}}</div>
+  </div>
+  <div class="footerCard">
+    <p>{{ reviewContent }}</p>
+    <div class="divWatched">Assistido em: {{ watchedDate | date:'mediumDate'}}</div>
   </div>
 </section>

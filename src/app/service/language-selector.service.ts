@@ -63,11 +63,9 @@ export class LanguageSelectorService {
 
   setCodeLanguage(language: Language): void {
     this.languageCurrent = language ? language : this.languageCurrent;
-    console.log('set SELECT LANGUAGE: ', languageDetails[language].code);
   }
 
   getLanguage(): Language {
-    console.log('get SELECT LANGUAGE: ', this.languageCurrent);
     return this.languageCurrent;
   }
 

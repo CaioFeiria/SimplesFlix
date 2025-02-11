@@ -27,7 +27,6 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
     this.languageApplicationCurrent =
       this.languageService.getLanguageApplication();
-    console.log(this.languageApplicationCurrent);
   }
 
   isMoviesActive(): boolean {

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { HeaderInformationComponent } from '../../components/header-information/header-information.component';
 import { CardDetailsMovieComponent } from '../../components/card-details-movie/card-details-movie.component';
 import { ActivatedRoute } from '@angular/router';
 import { SynopsisCardComponent } from '../../components/synopsis-card/synopsis-card.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { MovieService } from '../../service/movie.service';
 import { CommonButtonComponent } from '../../components/common-button/common-button.component';
 import { LoadMovie } from '../../types/loadMovie';
@@ -16,6 +16,14 @@ import { LanguageSelectorService } from '../../service/language-selector.service
 import { Review } from '../../types/review';
 import { ReviewsApiService } from '../../service/reviews-api.service';
 import { ReviewCardComponent } from '../../components/review-card/review-card.component';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import Swiper from 'swiper';
+import { SwiperCarouselComponent } from '../../components/swiper-carousel/swiper-carousel.component';
 
 @Component({
   selector: 'app-movie-details',
@@ -29,11 +37,14 @@ import { ReviewCardComponent } from '../../components/review-card/review-card.co
     AvatarComponent,
     ModalContainerComponent,
     ReviewCardComponent,
+    ReactiveFormsModule,
+    SwiperCarouselComponent,
   ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.scss',
+  providers: [DatePipe],
 })
-export class MovieDetailsComponent implements OnInit {
+export class MovieDetailsComponent implements OnInit, AfterViewInit {
   movieDetails!: LoadMovie;
   casts: Array<Cast> = [];
   outherCasts: Array<Cast> = [];
@@ -42,18 +53,43 @@ export class MovieDetailsComponent implements OnInit {
   idParam: string = '';
   exibirModal = false;
   reviews: Review[] = [];
+  nameModel: string = '';
+  reviewModel: string = '';
+  ratingModel: string = '';
+  watchedDateModel: string = '';
+  formReviews!: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
     private languageService: LanguageSelectorService,
-    private reviewService: ReviewsApiService
+    private reviewService: ReviewsApiService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
     this.idParam = this.activatedRoute.snapshot.params['id'];
     this.loadMovie(this.idParam);
     this.loadReviews(this.idParam);
+
+    this.formReviews = new FormGroup({
+      author: new FormControl('', [Validators.required]),
+      reviewContent: new FormControl('', [Validators.minLength(5)]),
+      rating: new FormControl('', [Validators.required]),
+      watchedDate: new FormControl('', [Validators.required]),
+      movieId: new FormControl(Number(this.idParam)),
+      reviewDate: new FormControl(
+        this.datePipe.transform(new Date(), 'yyyy-MM-dd')
+      ),
+      userPhoto: new FormControl('/assets/userDefault.png'),
+    });
+  }
+
+  ngAfterViewInit() {
+    new Swiper('.mySwiper', {
+      effect: 'cards',
+      grabCursor: true,
+    });
   }
 
   loadMovie(idParam: string): void {
@@ -68,7 +104,6 @@ export class MovieDetailsComponent implements OnInit {
       .getCredtisMovieById(this.languageService.getCode(), idParam)
       .subscribe({
         next: (res) => {
-          console.log(res);
           if (res.cast) {
             this.fourFirts = [...res.cast.slice(0, 4)];
             for (let person of this.fourFirts) {
@@ -80,10 +115,15 @@ export class MovieDetailsComponent implements OnInit {
               return person.job === 'Director';
             });
           }
-          console.log('4 PRIMEIROS: ', this.casts);
-          console.log('DIRETOR: ', this.director);
         },
       });
+  }
+
+  onSubmit(): void {
+    this.reviewService.insertUser(this.formReviews.value).subscribe({
+      next: (val) => console.log(' Form value: ', val),
+    });
+    this.loadReviews(this.idParam);
   }
 
   loadMoreCasts(): void {
@@ -94,22 +134,18 @@ export class MovieDetailsComponent implements OnInit {
           if (res.cast) {
             this.outherCasts = res.cast.slice(this.fourFirts.length);
           }
-          console.log('TODOS OS CASTS: ', this.loadMoreCasts);
         },
       });
   }
 
   loadModal(): void {
     this.exibirModal = !this.exibirModal;
-    console.log(this.exibirModal);
   }
 
   loadReviews(idParam: string): void {
-    this.reviewService.getUsers().subscribe({
-      next: (review) => {
-        console.log('Todos reviews: ', review);
-        this.reviews = review.filter((rev) => rev.movieId == Number(idParam));
-        console.log('Reviews desse filme: ', this.reviews);
+    this.reviewService.getReviewsByMovie(idParam).subscribe({
+      next: (val) => {
+        this.reviews = val;
       },
     });
   }
@@ -119,23 +155,3 @@ export class MovieDetailsComponent implements OnInit {
 //   for (let i = 0; i < star; i++) {
 //     this.stars.push(star);
 //   }
-
-// setMovieProperties(movie: Movie): void {
-//   this.movieDetails = {
-//     id: movie.id,
-//     title: movie.title,
-//     imgMovie: movie.image,
-//     releaseDate: movie.releaseDate,
-//     sinopse: movie.synopsis,
-//     director: movie.director,
-//     rating: movie.rating,
-//     genres: movie.genres,
-//     castDetails: movie.cast.map(({ actorName, character, actorImage }) => ({
-//       actorName,
-//       character,
-//       actorImage,
-//     })),
-//     movie: movie,
-//   };
-//   console.log(this.movieDetails.id);
-// }

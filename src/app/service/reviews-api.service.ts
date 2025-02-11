@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Review } from '../types/review';
 
 @Injectable({
@@ -8,11 +8,18 @@ import { Review } from '../types/review';
 })
 export class ReviewsApiService {
   private apiUrl = 'http://localhost:3000/reviews';
+  private reviews: Review[] = [];
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<Review[]> {
+  getReviews(): Observable<Review[]> {
     return this.http.get<Review[]>(`${this.apiUrl}`);
+  }
+
+  getReviewsByMovie(movieId: string): Observable<Review[]> {
+    return this.getReviews().pipe(
+      map((reviews) => reviews.filter((rev) => rev.movieId == Number(movieId)))
+    );
   }
 
   insertUser(review: Review): Observable<Review> {

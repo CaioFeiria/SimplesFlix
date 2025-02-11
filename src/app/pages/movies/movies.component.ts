@@ -56,7 +56,6 @@ export class MoviesComponent implements OnDestroy {
   }
 
   loadMovies(): void {
-    console.log('CURRENT', this.currentLanguage);
     this.movieService
       .getPopularMovies(this.languageService.getCode(), 1)
       .subscribe({
