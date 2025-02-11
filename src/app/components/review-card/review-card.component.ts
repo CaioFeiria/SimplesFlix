@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { ReviewsApiService } from '../../service/reviews-api.service';
-import { Review } from '../../types/review';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,12 +10,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './review-card.component.scss',
 })
 export class ReviewCardComponent {
-  @Input() userPhoto: string = '';
-  @Input() author: string = '';
-  @Input() reviewContent: string = '';
-  @Input() rating: number = 0;
-  @Input() reviewDate: string = '';
-  @Input() watchedDate: string = '';
+  @Input() userPhoto!: string;
+  @Input() author!: string;
+  @Input() reviewContent!: string;
+  @Input() rating!: number;
+  @Input() reviewDate!: string;
+  @Input() watchedDate!: string;
+  @Input() isNotEmpty: boolean = true;
 
   constructor(private reviewService: ReviewsApiService) {}
 }

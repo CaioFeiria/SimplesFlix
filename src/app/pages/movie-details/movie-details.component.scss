@@ -1,7 +1,3 @@
-.divHeader {
-  margin-left: 20px;
-}
-
 .modal-title {
   padding: 10px;
   border-bottom: 1px solid #ddd; /* Linha separadora abaixo do título */
@@ -19,12 +15,11 @@
   text-align: right;
 }
 
-.myContainer {
+.containerDetails {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 4rem;
-  overflow: hidden;
 
   .title {
     padding-top: 25px;
@@ -66,54 +61,98 @@
 
 .secRevAndForm{
   display: flex;
-  width: 96%;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
   padding-top: 25px;
+  gap: 20px;
 }
 
 .divReviews {
-  padding: 20px 0px 10px 0px;
-  margin-left: 30px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
 .divForm {
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7.5rem;
+  height: 380px;
+  margin-top: 19px;
+  min-width: 100%;
+  margin-bottom: 25px;
 
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
 
-    label {
-      font-weight: 500;
+    h4 {
+      padding-top: 10px;
+      font-size: 22px;
     }
 
-    input {
-      border-radius: 6px;
-      border: 1px solid dimgrey;
-      font-size: 16px;
-      padding: 3px;
-      padding-left: 10px;
-      outline: #1D4ED8;
-      color: rgb(85, 85, 85);
-      margin-bottom: 10px;
-    }
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-    input:focus {
-      border: 2px solid #1D4ED8;
+      label {
+        font-weight: 500;
+        font-size: 15px;
+      }
+
+      input {
+        border-radius: 6px;
+        border: 1px solid dimgrey;
+        font-size: 15px;
+        padding: 2px;
+        padding-left: 10px;
+        outline: #1D4ED8;
+        color: rgb(85, 85, 85);
+        margin-bottom: 10px;
+      }
+
+      input:focus {
+        border: 2px solid #1D4ED8;
+      }
     }
   }
+
+  .divUndraw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 20px;
+    width: 51.6rem;
+  }
+
+  @media (max-width:768px) {
+    img {
+      display: none;
+    }
+  }
+
+  @media (min-width:1900px) {
+    gap: 2.5rem;
+
+    form {
+      width: 593px;
+    }
+
+    img {
+      width: 540px;
+    }
+}
 }
 
 // Media Queries
 @media (max-width: 769px) {
-  .myContainer {
+  .containerDetails {
     flex-direction: column;
     gap: 20px;
 
@@ -131,7 +170,7 @@
 }
 
 @media (min-width: 1024px) {
-  .myContainer {
+  .containerDetails {
     gap: 20px;
     flex-wrap: nowrap;
 
@@ -150,7 +189,7 @@
 }
 
 @media (min-width: 1440px) {
-  .myContainer {
+  .containerDetails {
     gap: 20px;
     flex-wrap: nowrap;
 
@@ -169,8 +208,7 @@
 }
 
 @media (min-width: 1530px) {
-  .myContainer {
-    gap: 55px;
+  .containerDetails {
     flex-wrap: nowrap;
 
     .title {
@@ -179,7 +217,7 @@
 
     .secCastAndSinopsis {
       .divCast {
-        width: 36rem;
+        width: 42rem;
         height: 325px;
         gap: 10px;
       }
@@ -188,9 +226,7 @@
 }
 
 @media (min-width: 1900px) {
-  .myContainer {
-    gap: 70px;
-    flex-wrap: nowrap;
+  .containerDetails {
 
     .title {
       font-size: 33px;  
@@ -198,7 +234,7 @@
 
     .secCastAndSinopsis {
       .divCast {
-        width: 46rem;
+        width: 52rem;
         height: 29.7rem;
         gap: 20px;
       }

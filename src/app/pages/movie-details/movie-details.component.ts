@@ -23,7 +23,6 @@ import {
   Validators,
 } from '@angular/forms';
 import Swiper from 'swiper';
-import { SwiperCarouselComponent } from '../../components/swiper-carousel/swiper-carousel.component';
 
 @Component({
   selector: 'app-movie-details',
@@ -38,7 +37,6 @@ import { SwiperCarouselComponent } from '../../components/swiper-carousel/swiper
     ModalContainerComponent,
     ReviewCardComponent,
     ReactiveFormsModule,
-    SwiperCarouselComponent,
   ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.scss',

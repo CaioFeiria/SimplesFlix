@@ -1,43 +1,39 @@
-<div class="divHeader">
-  <div class="divBreadAndLang">
-    <app-breadcrumb 
-      [previousRoutes]="[
+<main class="myContainer">
+  <div class="divHeader">
+    <div class="divBreadAndLang">
+      <app-breadcrumb
+        [previousRoutes]="[
           { icon: '/assets/icons/home.svg', path: 'Início', href: '/' },
           { icon: '/assets/icons/movie.svg', path: 'Filmes', href: '/movies' }
-      ]"
-
-      [currentRoute]="
-          { icon: '/assets/icons/info.png', path: movieDetails.title, href: '/movie/' + movieDetails.id }
-      "
+        ]"
+        [currentRoute]="{
+          icon: '/assets/icons/info.png',
+          path: movieDetails.title,
+          href: '/movie/' + movieDetails.id
+        }"
       />
     </div>
-  <app-header-information 
-  [movieTitle]="movieDetails.title"
-/>
-</div>
-<ng-container *ngIf="exibirModal">
-  <app-modal-container
-    (visivelChange)="loadModal()"
-  >
-    <div app-modal-title class="modal-title">  
-      <h2>Elenco</h2>
-    </div>
-    <div app-modal-body class="modal-body">    
-      <app-avatar *ngFor="let person of outherCasts"
+    <app-header-information [movieTitle]="movieDetails.title" />
+  </div>
+  <ng-container *ngIf="exibirModal">
+    <app-modal-container (visivelChange)="loadModal()">
+      <div app-modal-title class="modal-title">
+        <h2>Elenco</h2>
+      </div>
+      <div app-modal-body class="modal-body">
+        <app-avatar
+          *ngFor="let person of outherCasts"
           [name]="person.name"
           [desc]="person.character"
           [photo]="person.profile_path"
         />
-    </div>
-    <div app-modal-footer class="modal-footer">    
-      <app-common-button 
-        label="Fechar"
-        (click)="loadModal()"
-      />
-    </div>
-  </app-modal-container>
-</ng-container>
-<section class="myContainer">
+      </div>
+      <div app-modal-footer class="modal-footer">
+        <app-common-button label="Fechar" (click)="loadModal()" />
+      </div>
+    </app-modal-container>
+  </ng-container>
+  <section class="containerDetails">
     <app-card-details-movie
       [imgMovie]="movieDetails.poster_path"
       [releaseDate]="movieDetails.release_date"
@@ -45,69 +41,102 @@
       [rating]="movieDetails.vote_average"
       [genres]="movieDetails.genres"
     />
-    <section class="secCastAndSinopsis">
+    <div class="secCastAndSinopsis">
       <div class="divCast">
         <h3 class="title">Elenco</h3>
-        <app-avatar *ngFor="let person of casts"
+        <app-avatar
+          *ngFor="let person of casts"
           [name]="person.name"
           [desc]="person.character"
           [photo]="person.profile_path"
         />
         <div class="divButton">
-          <app-common-button 
+          <app-common-button
             label="Ver mais +"
             (click)="loadModal(); loadMoreCasts()"
           />
         </div>
       </div>
       <div>
-        <app-synopsis-card 
-          [sinopse]="movieDetails.overview ? movieDetails.overview : 'Não possui sinopse'"
-        /> 
-      </div>
-  </section>
-</section>
-<section class="secRevAndForm">
-  <div class="divReviews">
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        @for (item of reviews; track $index) {
-          <div class="swiper-slide">
-            <app-review-card 
-              [userPhoto]="item.userPhoto"
-              [author]="item.author"
-              [reviewContent]="item.reviewContent"
-              [rating]="item.rating"
-              [reviewDate]="item.reviewDate"
-              [watchedDate]="item.watchedDate"
-            />
-          </div>
-        }
+        <app-synopsis-card
+          [sinopse]="
+            movieDetails.overview ? movieDetails.overview : 'Não possui sinopse'
+          "
+        />
       </div>
     </div>
-  </div>
-  <div class="divForm">
-    <h4>Adicione uma avaliação</h4>
-    <form [formGroup]="formReviews" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="name">Nome</label>
-        <input type="text" formControlName="author" [(ngModel)]="nameModel" name="name" id="name">
+  </section>
+  <section class="secRevAndForm">
+    <div class="divForm">
+      <form [formGroup]="formReviews" (ngSubmit)="onSubmit()">
+        <h4>Adicione uma avaliação</h4>
+        <div>
+          <label for="name">Nome</label>
+          <input
+            type="text"
+            formControlName="author"
+            [(ngModel)]="nameModel"
+            name="name"
+            id="name"
+          />
+        </div>
+        <div>
+          <label for="review">Review</label>
+          <input
+            type="text"
+            formControlName="reviewContent"
+            [(ngModel)]="reviewModel"
+            name="review"
+            id="review"
+          />
+        </div>
+        <div>
+          <label for="rating">Nota</label>
+          <input
+            type="number"
+            formControlName="rating"
+            [(ngModel)]="ratingModel"
+            name="rating"
+            id="rating"
+            placeholder="Ex: 7.6"
+          />
+        </div>
+        <div>
+          <label for="watchedDate">Assistido em</label>
+          <input
+            type="date"
+            formControlName="watchedDate"
+            [(ngModel)]="watchedDateModel"
+            name="watchedDate"
+            id="watchedDate"
+          />
+        </div>
+        <app-common-button [label]="'Publicar'" />
+      </form>
+      <div class="divUndraw">
+        <img src="assets/undraw_forms.svg" width="550" alt="Desenho forms">
       </div>
-      <div>
-        <label for="review">Review</label>
-        <input type="text" formControlName="reviewContent" [(ngModel)]="reviewModel" name="review" id="review">
-      </div>
-      <div>
-        <label for="rating">Nota</label>
-        <input type="number" formControlName="rating" [(ngModel)]="ratingModel" name="rating" id="rating" placeholder="Ex: 7.6">
-      </div>
-      <div>
-        <label for="watchedDate">Assistido em</label>
-        <input type="date" formControlName="watchedDate" [(ngModel)]="watchedDateModel" name="watchedDate" id="watchedDate">
-      </div>
-      <app-common-button 
-        [label]="'Enviar'"
-      />
-    </form>
-  </div>
-</section>
+    </div>
+    <div class="divReviews">
+      @if (reviews.length > 0) { 
+        @for (item of reviews; track $index) {
+          <app-review-card
+            [userPhoto]="item.userPhoto"
+            [author]="item.author"
+            [reviewContent]="item.reviewContent"
+            [rating]="item.rating"
+            [reviewDate]="item.reviewDate"
+            [watchedDate]="item.watchedDate"
+          />
+        } 
+      } @else {
+        <ng-content>
+          <app-review-card
+            [isNotEmpty]="false"
+            reviewContent="Nenhum review publicado sobre esse filme!"
+          />
+        </ng-content>
+      }
+    </div>
+  </section>
+</main>

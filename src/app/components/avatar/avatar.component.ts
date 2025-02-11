@@ -10,8 +10,8 @@ import { LanguageForApplication } from '../../types/languageApplication';
   styleUrl: './avatar.component.scss',
 })
 export class AvatarComponent {
-  @Input() name!: string;
-  @Input() photo!: string;
+  @Input() name?: string;
+  @Input() photo?: string;
   @Input() desc?: string | null;
   @Input() isNameHighlighted: boolean = true;
   @Input() photoLocal: boolean = false;
