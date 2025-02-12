@@ -10,7 +10,7 @@
   <div class="bodyCard">
     <span>
       <img src="assets/star.png" alt="Icon Like" width="25" />
-      <p>{{ rating }}</p>
+      <p>{{ rating | number: '1.1-1' : 'en-US' }}</p>
     </span>
   </div>
   <div class="footerCard">

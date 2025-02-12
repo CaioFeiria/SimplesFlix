@@ -22,7 +22,7 @@
     <app-search 
     />
     <!-- (searched)="filterMovies($event)" -->
-    <p class="searchedMovies">{{ count() }} filme(s) listado(s)</p>
+    <p class="searchedMovies">{{ count() | number:'1.0-1'}} filme(s) listado(s) </p>
   </div>
   <div class="containerMovies">
     <ng-content *ngIf="movies.length > 0; else emptyMovies">

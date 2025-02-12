@@ -169,6 +169,66 @@
       "movieId": 993710,
       "reviewDate": "2025-02-12",
       "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "9458",
+      "author": "Yuri",
+      "reviewContent": "Superou as minhas expectativas",
+      "rating": 8.4,
+      "watchedDate": "2025-02-10",
+      "movieId": 993710,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "79b0",
+      "author": "Judson",
+      "reviewContent": "Superou as minhas expectativas",
+      "rating": 9,
+      "watchedDate": "2025-02-05",
+      "movieId": 1241982,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "2658",
+      "author": "",
+      "reviewContent": "",
+      "rating": "",
+      "watchedDate": "",
+      "movieId": 539972,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "fec1",
+      "author": "Timão",
+      "reviewContent": "Ação a todo momento, muito bom!!",
+      "rating": 10,
+      "watchedDate": "2025-02-04",
+      "movieId": 1249289,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "c16f",
+      "author": "Eric",
+      "reviewContent": "Generico!",
+      "rating": 5.2,
+      "watchedDate": "2025-01-16",
+      "movieId": 1249289,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "46c0",
+      "author": "Lucas",
+      "reviewContent": "Pando é bonito",
+      "rating": 7.8,
+      "watchedDate": "2025-02-13",
+      "movieId": 1160956,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
     }
   ]
 }

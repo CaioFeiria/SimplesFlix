@@ -39,7 +39,7 @@
       flex-direction: column;
       margin-top: 5px;
       padding-left: 40px;
-      background-color: white;
+      background-color: #ffffff;
       width: 551px;
       height: 390px;
       border-radius: 12px;
@@ -59,7 +59,7 @@
   }
 }
 
-.secRevAndForm{
+.secRevAndForm {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -68,54 +68,116 @@
 }
 
 .divForm {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7.5rem;
-  height: 380px;
+  background-color: #ffffff;
+  width: 41.9rem;
+  height: auto;
+  padding: 30px;
   margin-top: 19px;
   margin-bottom: 25px;
+  border-radius: 12px;
+  box-sizing: border-box;
 
-  form {
-    background-color: white;
-    padding: 30px;
+  h4 {
+    padding-top: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .form {
+    padding: 20px;
     padding-bottom: 12px;
     border-radius: 12px;
-    width: 41.9rem;
+    width: 100%;
+    gap: 20px;
+    box-sizing: border-box;
 
-    h4 {
-      padding-top: 10px;
-      font-size: 24px;
-      font-weight: 600;
+    .divContainerInputs {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px; 
+    }
+
+    .divInpName,
+    .divInpRating,
+    .divInpDate {
+      width: auto;
+    }
+
+    .divInpName {
+      flex: 1 1 10rem;
+    }
+
+    .divInpRating {
+      flex: 1 1 4.5rem;
+    }
+
+    .divInpDate {
+      flex: 1 1 8rem;
     }
 
     .divBtnForm {
-      display: flex;
-
+      display: flex !important;
+      justify-content: flex-end !important;
+      gap: 10px;
     }
 
-    div {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    label {
+      font-weight: 500;
+      font-size: 15px;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
 
-      label {
-        font-weight: 500;
-        font-size: 15px;
+    input {
+      border: none;
+      border-bottom: 1px solid #696969;
+      font-size: 15px;
+      padding: 5px 0;
+      padding-left: 10px;
+      color: #555555;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    textarea {
+      resize: none;
+      border-radius: 6px;
+      padding-left: 10px;
+      height: 5rem;
+      width: 100%;
+    }
+
+    input:focus {
+      border: none;
+      outline: 1px solid #1d4ed8;
+    }
+
+    @media (max-width: 768px) {
+      .divForm {
+        width: 100%;
       }
 
-      input {
-        border-radius: 6px;
-        border: 1px solid dimgrey;
-        font-size: 15px;
-        padding: 5px 0px;
-        padding-left: 10px;
-        outline: #1D4ED8;
-        color: rgb(85, 85, 85);
+      .form {
+        width: 100%;
+        padding: 15px;
+      }
+
+      .divContainerInputs {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .divInpName,
+      .divInpRating,
+      .divInpDate {
+        width: 100%;
         margin-bottom: 10px;
       }
 
-      input:focus {
-        border: 2px solid #1D4ED8;
+      .divBtnForm {
+        flex-direction: column;
+        gap: 15px;
       }
     }
   }
@@ -125,16 +187,18 @@
   width: 400px;
   height: 340px;
   position: relative;
-  top: 5px;
-  left: 18PX;
-  
+  top: 20px;
+  left: 42px;
+
   swiper-slide {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 18px;
     font-size: 22px;
-    font-weight: 500
+    font-weight: 500;
+    height: 280px !important;
+    width: 370px !important;
   }
 }
 
@@ -163,7 +227,7 @@
     flex-wrap: nowrap;
 
     .title {
-      font-size: 30px;  
+      font-size: 30px;
     }
 
     .secCastAndSinopsis {
@@ -182,7 +246,7 @@
     flex-wrap: nowrap;
 
     .title {
-      font-size: 28px;  
+      font-size: 28px;
     }
 
     .secCastAndSinopsis {
@@ -200,7 +264,7 @@
     flex-wrap: nowrap;
 
     .title {
-      font-size: 24px;  
+      font-size: 24px;
     }
 
     .secCastAndSinopsis {
@@ -215,9 +279,8 @@
 
 @media (min-width: 1900px) {
   .containerDetails {
-
     .title {
-      font-size: 33px;  
+      font-size: 33px;
     }
 
     .secCastAndSinopsis {

@@ -75,58 +75,78 @@
       }
     </div>
     <div class="divForm">
-      <form [formGroup]="formReviews" (ngSubmit)="onSubmit()">
+      <div>
         <h4>Adicione uma avaliação</h4>
-        <div>
-          <label for="name">Nome</label>
-          <input
-            type="text"
-            formControlName="author"
-            [(ngModel)]="nameModel"
-            name="name"
-            id="name"
-            placeholder="Ex: Josias"
-          />
+      </div>
+      <form [formGroup]="formReviews" class="form" (ngSubmit)="onSubmit()">
+        <div class="divContainerInputs">
+          <div class="divInpName">
+            <label for="name">Nome</label>
+            <input
+              type="text"
+              formControlName="author"
+              name="name"
+              id="name"
+              placeholder="Ex: Josias"
+            />
+            <p *ngIf="formReviews.get('author')?.invalid && formReviews.get('author')?.touched"
+            style="color: red; font-size: 11px;">
+              Nome é obrigatório, mínimo 3 caracteres.
+            </p>
+          </div>
+  
+          <div class="divInpRating">
+            <label for="rating">Nota</label>
+            <input
+              type="number"
+              formControlName="rating"
+              name="rating"
+              id="rating"
+              placeholder="Ex: 7.6"
+            />
+            <p *ngIf="formReviews.get('rating')?.invalid && formReviews.get('rating')?.touched"
+            style="color: red; font-size: 11px;">
+              Nota é obrigatória, números de 0 a 10.
+            </p>
+          </div>
+  
+          <div class="divInpDate">
+            <label for="watchedDate">Assistido em</label>
+            <input
+              type="date"
+              formControlName="watchedDate"
+              name="watchedDate"
+              id="watchedDate"
+            />
+            <p *ngIf="formReviews.get('watchedDate')?.invalid && formReviews.get('watchedDate')?.touched"
+            style="color: red; font-size: 11px;">
+              Data é obrigatória.
+            </p>
+          </div>
         </div>
+
         <div>
           <label for="review">Review</label>
-          <input
+          <textarea
             type="text"
             formControlName="reviewContent"
-            [(ngModel)]="reviewModel"
             name="review"
             id="review"
             placeholder="Ex: Muito bom..."
-          />
+          ></textarea>
+          <p *ngIf="formReviews.get('reviewContent')?.invalid && formReviews.get('reviewContent')?.touched"
+          style="color: red; font-size: 11px;">
+            Review é obrigatório.
+          </p>
         </div>
-        <div>
-          <label for="rating">Nota</label>
-          <input
-            type="number"
-            formControlName="rating"
-            [(ngModel)]="ratingModel"
-            name="rating"
-            id="rating"
-            placeholder="Ex: 7.6"
-          />
-        </div>
-        <div>
-          <label for="watchedDate">Assistido em</label>
-          <input
-            type="date"
-            formControlName="watchedDate"
-            [(ngModel)]="watchedDateModel"
-            name="watchedDate"
-            id="watchedDate"
-          />
-        </div>
-        <div class="divBtnForm">
+        
           <app-common-button 
-          [label]="'Publicar'" 
-          type="submit"
-          (click)="loadModalAddReview()"
-        />
-        </div>
+            [label]="'Publicar'" 
+            type="submit"
+            [isDisable]="formInvalido"
+            (click)="loadModalAddReview()"
+            class="divBtnForm"
+          />
       </form>
       <!-- <div class="divUndraw">
         <img src="assets/undraw_forms.svg" width="550" alt="Desenho forms">

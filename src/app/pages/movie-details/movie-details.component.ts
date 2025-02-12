@@ -58,12 +58,8 @@ export class MovieDetailsComponent implements OnInit {
   exibirModalCast = false;
   exibirModalAddReview = false;
   reviews: Review[] = [];
-  nameModel: string = '';
-  reviewModel: string = '';
-  ratingModel: string = '';
-  watchedDateModel: string = '';
   formReviews!: FormGroup;
-  formInvalido: boolean = false;
+  formInvalido: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -84,13 +80,10 @@ export class MovieDetailsComponent implements OnInit {
         Validators.required,
       ]),
       reviewContent: new FormControl('', [
-        Validators.minLength(5),
+        Validators.minLength(3),
         Validators.required,
       ]),
-      rating: new FormControl('', [
-        Validators.maxLength(3),
-        Validators.required,
-      ]),
+      rating: new FormControl('', [Validators.max(10), Validators.required]),
       watchedDate: new FormControl('', [Validators.required]),
       movieId: new FormControl(Number(this.idParam)),
       reviewDate: new FormControl(
@@ -98,15 +91,7 @@ export class MovieDetailsComponent implements OnInit {
       ),
       userPhoto: new FormControl('/assets/userDefault.png'),
     });
-    console.log('Author é inválido: ', this.formReviews.get('author')?.invalid);
-    console.log(
-      'Content é inválido: ',
-      this.formReviews.get('reviewContent')?.invalid
-    );
-    console.log('Rating é inválido: ', this.formReviews.get('rating')?.invalid);
-    if (this.formReviews.get('author')?.invalid) {
-      this.formInvalido = true;
-    }
+    this.formValidation();
   }
 
   loadMovie(idParam: string): void {
@@ -167,6 +152,18 @@ export class MovieDetailsComponent implements OnInit {
     this.reviewService.getReviewsByMovie(idParam).subscribe({
       next: (val) => {
         this.reviews = val;
+      },
+    });
+  }
+
+  formValidation(): void {
+    this.formReviews.valueChanges.subscribe({
+      next: () => {
+        if (this.formReviews.invalid) {
+          this.formInvalido = true;
+        } else {
+          this.formInvalido = false;
+        }
       },
     });
   }
