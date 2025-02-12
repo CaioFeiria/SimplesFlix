@@ -1,4 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from '@angular/core';
 import { HeaderInformationComponent } from '../../components/header-information/header-information.component';
 import { CardDetailsMovieComponent } from '../../components/card-details-movie/card-details-movie.component';
 import { ActivatedRoute } from '@angular/router';
@@ -41,6 +46,7 @@ import Swiper from 'swiper';
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.scss',
   providers: [DatePipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MovieDetailsComponent implements OnInit, AfterViewInit {
   movieDetails!: LoadMovie;

@@ -69,6 +69,26 @@
       "movieId": 1241982,
       "reviewDate": "2025-02-11",
       "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "f7ac",
+      "author": "Jackie",
+      "reviewContent": "O panda é meio maluco kkk",
+      "rating": 7.2,
+      "watchedDate": "2025-01-09",
+      "movieId": 1160956,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "5663",
+      "author": "Chan",
+      "reviewContent": "Assistiria de novo, muito engraçado",
+      "rating": 8.6,
+      "watchedDate": "2025-01-16",
+      "movieId": 1160956,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
     }
   ]
 }

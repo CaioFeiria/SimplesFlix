@@ -111,32 +111,39 @@
             id="watchedDate"
           />
         </div>
-        <app-common-button [label]="'Publicar'" />
+        <app-common-button 
+          [label]="'Publicar'" 
+          type="submit"
+        />
       </form>
-      <div class="divUndraw">
+      <!-- <div class="divUndraw">
         <img src="assets/undraw_forms.svg" width="550" alt="Desenho forms">
+      </div> -->
+      <div class="divReviews">
+        @if (reviews.length > 0) { 
+          <swiper-container pagination="true" class="mySwiper" effect="cards" grab-cursor="true">
+          @for (item of reviews; track $index) {
+            <swiper-slide>
+              <app-review-card
+                [userPhoto]="item.userPhoto"
+                [author]="item.author"
+                [reviewContent]="item.reviewContent"
+                [rating]="item.rating"
+                [reviewDate]="item.reviewDate"
+                [watchedDate]="item.watchedDate"
+              />
+            </swiper-slide>
+          } 
+        </swiper-container>
+        } @else {
+          <ng-content>
+            <app-review-card
+              [isNotEmpty]="false"
+              reviewContent="Nenhum review publicado sobre esse filme!"
+            />
+          </ng-content>
+        }
       </div>
-    </div>
-    <div class="divReviews">
-      @if (reviews.length > 0) { 
-        @for (item of reviews; track $index) {
-          <app-review-card
-            [userPhoto]="item.userPhoto"
-            [author]="item.author"
-            [reviewContent]="item.reviewContent"
-            [rating]="item.rating"
-            [reviewDate]="item.reviewDate"
-            [watchedDate]="item.watchedDate"
-          />
-        } 
-      } @else {
-        <ng-content>
-          <app-review-card
-            [isNotEmpty]="false"
-            reviewContent="Nenhum review publicado sobre esse filme!"
-          />
-        </ng-content>
-      }
     </div>
   </section>
 </main>

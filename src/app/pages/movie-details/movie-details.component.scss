@@ -87,7 +87,7 @@
     background-color: white;
     padding: 30px;
     border-radius: 12px;
-    width: 400px;
+    width: 50rem;
 
     h4 {
       padding-top: 10px;
@@ -121,33 +121,49 @@
     }
   }
 
-  .divUndraw {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 1rem;
-    padding: 20px;
-    width: 51.6rem;
-  }
+//   .divUndraw {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: white;
+//     border-radius: 1rem;
+//     padding: 20px;
+//     width: 51.6rem;
+//   }
 
-  @media (max-width:768px) {
-    img {
-      display: none;
-    }
-  }
+//   @media (max-width:768px) {
+//     img {
+//       display: none;
+//     }
+//   }
 
-  @media (min-width:1900px) {
-    gap: 2.5rem;
+//   @media (min-width:1900px) {
+//     gap: 2.5rem;
 
-    form {
-      width: 593px;
-    }
+//     form {
+//       width: 593px;
+//     }
 
-    img {
-      width: 540px;
-    }
+//     img {
+//       width: 540px;
+//     }
+//   }
 }
+
+.mySwiper {
+  width: 400px;
+  height: 340px;
+  position: relative;
+  top: 22px;
+  
+  swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: 500
+  }
 }
 
 // Media Queries

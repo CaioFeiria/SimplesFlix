@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 export class CommonButtonComponent {
   @Input() label!: string;
   @Input() icon: string = '';
+  @Input() type: string = '';
 }
