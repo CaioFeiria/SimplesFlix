@@ -61,17 +61,10 @@
 
 .secRevAndForm{
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding-top: 25px;
-  gap: 20px;
-}
-
-.divReviews {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  gap: 6rem;
 }
 
 .divForm {
@@ -80,18 +73,24 @@
   gap: 7.5rem;
   height: 380px;
   margin-top: 19px;
-  min-width: 100%;
   margin-bottom: 25px;
 
   form {
     background-color: white;
     padding: 30px;
+    padding-bottom: 12px;
     border-radius: 12px;
-    width: 50rem;
+    width: 41.9rem;
 
     h4 {
       padding-top: 10px;
-      font-size: 22px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .divBtnForm {
+      display: flex;
+
     }
 
     div {
@@ -108,7 +107,7 @@
         border-radius: 6px;
         border: 1px solid dimgrey;
         font-size: 15px;
-        padding: 2px;
+        padding: 5px 0px;
         padding-left: 10px;
         outline: #1D4ED8;
         color: rgb(85, 85, 85);
@@ -120,41 +119,14 @@
       }
     }
   }
-
-//   .divUndraw {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     background-color: white;
-//     border-radius: 1rem;
-//     padding: 20px;
-//     width: 51.6rem;
-//   }
-
-//   @media (max-width:768px) {
-//     img {
-//       display: none;
-//     }
-//   }
-
-//   @media (min-width:1900px) {
-//     gap: 2.5rem;
-
-//     form {
-//       width: 593px;
-//     }
-
-//     img {
-//       width: 540px;
-//     }
-//   }
 }
 
 .mySwiper {
   width: 400px;
   height: 340px;
   position: relative;
-  top: 22px;
+  top: 5px;
+  left: 18PX;
   
   swiper-slide {
     display: flex;
@@ -256,4 +228,43 @@
       }
     }
   }
+  .secRevAndForm {
+    gap: 14.4rem;
+
+    .mySwiper {
+      left: 6rem;
+    }
+
+    .divForm form {
+      width: 51.7rem;
+    }
+  }
 }
+
+//   .divUndraw {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: white;
+//     border-radius: 1rem;
+//     padding: 20px;
+//     width: 51.6rem;
+//   }
+
+//   @media (max-width:768px) {
+//     img {
+//       display: none;
+//     }
+//   }
+
+//   @media (min-width:1900px) {
+//     gap: 2.5rem;
+
+//     form {
+//       width: 593px;
+//     }
+
+//     img {
+//       width: 540px;
+//     }
+//   }

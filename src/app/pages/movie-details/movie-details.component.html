@@ -15,24 +15,6 @@
     </div>
     <app-header-information [movieTitle]="movieDetails.title" />
   </div>
-  <ng-container *ngIf="exibirModal">
-    <app-modal-container (visivelChange)="loadModal()">
-      <div app-modal-title class="modal-title">
-        <h2>Elenco</h2>
-      </div>
-      <div app-modal-body class="modal-body">
-        <app-avatar
-          *ngFor="let person of outherCasts"
-          [name]="person.name"
-          [desc]="person.character"
-          [photo]="person.profile_path"
-        />
-      </div>
-      <div app-modal-footer class="modal-footer">
-        <app-common-button label="Fechar" (click)="loadModal()" />
-      </div>
-    </app-modal-container>
-  </ng-container>
   <section class="containerDetails">
     <app-card-details-movie
       [imgMovie]="movieDetails.poster_path"
@@ -53,7 +35,7 @@
         <div class="divButton">
           <app-common-button
             label="Ver mais +"
-            (click)="loadModal(); loadMoreCasts()"
+            (click)="loadModalCast(); loadMoreCasts()"
           />
         </div>
       </div>
@@ -67,6 +49,31 @@
     </div>
   </section>
   <section class="secRevAndForm">
+    <div class="divReviews">
+      @if (reviews.length > 0) { 
+        <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
+        @for (item of reviews; track $index) {
+          <swiper-slide>
+            <app-review-card
+              [userPhoto]="item.userPhoto"
+              [author]="item.author"
+              [reviewContent]="item.reviewContent"
+              [rating]="item.rating"
+              [reviewDate]="item.reviewDate"
+              [watchedDate]="item.watchedDate"
+            />
+          </swiper-slide>
+        } 
+      </swiper-container>
+      } @else {
+        <ng-content>
+          <app-review-card
+            [isNotEmpty]="false"
+            reviewContent="Nenhum review publicado sobre esse filme!"
+          />
+        </ng-content>
+      }
+    </div>
     <div class="divForm">
       <form [formGroup]="formReviews" (ngSubmit)="onSubmit()">
         <h4>Adicione uma avaliação</h4>
@@ -78,6 +85,7 @@
             [(ngModel)]="nameModel"
             name="name"
             id="name"
+            placeholder="Ex: Josias"
           />
         </div>
         <div>
@@ -88,6 +96,7 @@
             [(ngModel)]="reviewModel"
             name="review"
             id="review"
+            placeholder="Ex: Muito bom..."
           />
         </div>
         <div>
@@ -111,39 +120,50 @@
             id="watchedDate"
           />
         </div>
-        <app-common-button 
+        <div class="divBtnForm">
+          <app-common-button 
           [label]="'Publicar'" 
           type="submit"
+          (click)="loadModalAddReview()"
         />
+        </div>
       </form>
       <!-- <div class="divUndraw">
         <img src="assets/undraw_forms.svg" width="550" alt="Desenho forms">
       </div> -->
-      <div class="divReviews">
-        @if (reviews.length > 0) { 
-          <swiper-container pagination="true" class="mySwiper" effect="cards" grab-cursor="true">
-          @for (item of reviews; track $index) {
-            <swiper-slide>
-              <app-review-card
-                [userPhoto]="item.userPhoto"
-                [author]="item.author"
-                [reviewContent]="item.reviewContent"
-                [rating]="item.rating"
-                [reviewDate]="item.reviewDate"
-                [watchedDate]="item.watchedDate"
-              />
-            </swiper-slide>
-          } 
-        </swiper-container>
-        } @else {
-          <ng-content>
-            <app-review-card
-              [isNotEmpty]="false"
-              reviewContent="Nenhum review publicado sobre esse filme!"
-            />
-          </ng-content>
-        }
-      </div>
     </div>
   </section>
 </main>
+<!-- Modal Add Review -->
+<ng-container *ngIf="exibirModalAddReview">
+  <app-modal-container (visivelChange)="loadModalAddReview()" [isAlert]="true">
+    <div app-modal-title class="modal-title">
+      <h2>Adicionar Review</h2>
+    </div>
+    <div app-modal-body class="modal-body">
+      <p>Seu review foi publicado com sucesso!</p>
+    </div>
+    <div app-modal-footer class="modal-footer">
+      <app-common-button label="Fechar" (click)="loadModalAddReview()" />
+    </div>
+  </app-modal-container>
+</ng-container>
+<!-- Modal Casts -->
+<ng-container *ngIf="exibirModalCast">
+  <app-modal-container (visivelChange)="loadModalCast()">
+    <div app-modal-title class="modal-title">
+      <h2>Elenco</h2>
+    </div>
+    <div app-modal-body class="modal-body">
+      <app-avatar
+        *ngFor="let person of outherCasts"
+        [name]="person.name"
+        [desc]="person.character"
+        [photo]="person.profile_path"
+      />
+    </div>
+    <div app-modal-footer class="modal-footer">
+      <app-common-button label="Fechar" (click)="loadModalCast()" />
+    </div>
+  </app-modal-container>
+</ng-container>

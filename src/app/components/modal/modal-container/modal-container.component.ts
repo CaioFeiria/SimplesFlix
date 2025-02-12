@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ModalContainerComponent {
   @Input() visivel: boolean = false;
+  @Input() isAlert: boolean = false;
   @Output() visivelChange = new EventEmitter<boolean>();
 
   close() {

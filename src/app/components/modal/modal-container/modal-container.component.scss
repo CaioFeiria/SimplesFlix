@@ -27,6 +27,21 @@
     box-shadow: 0 4px 8px rgba(48, 48, 48, 0.839);
   }
 
+  .modal-content-alert {
+    position: absolute;
+    top: 5rem;
+    gap: 10px;
+    margin: 0;
+    background-color: #f1f1f1;
+    padding: 30px;
+    padding-bottom: 0;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(48, 48, 48, 0.839);
+  }
+
   .btnClose {
     position: absolute;
     top: 10px;

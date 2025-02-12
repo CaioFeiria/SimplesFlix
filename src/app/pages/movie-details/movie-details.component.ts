@@ -48,20 +48,22 @@ import Swiper from 'swiper';
   providers: [DatePipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class MovieDetailsComponent implements OnInit, AfterViewInit {
+export class MovieDetailsComponent implements OnInit {
   movieDetails!: LoadMovie;
   casts: Array<Cast> = [];
   outherCasts: Array<Cast> = [];
   fourFirts: Array<Cast> = [];
   director!: Directing[];
   idParam: string = '';
-  exibirModal = false;
+  exibirModalCast = false;
+  exibirModalAddReview = false;
   reviews: Review[] = [];
   nameModel: string = '';
   reviewModel: string = '';
   ratingModel: string = '';
   watchedDateModel: string = '';
   formReviews!: FormGroup;
+  formInvalido: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -77,9 +79,18 @@ export class MovieDetailsComponent implements OnInit, AfterViewInit {
     this.loadReviews(this.idParam);
 
     this.formReviews = new FormGroup({
-      author: new FormControl('', [Validators.required]),
-      reviewContent: new FormControl('', [Validators.minLength(5)]),
-      rating: new FormControl('', [Validators.required]),
+      author: new FormControl('', [
+        Validators.minLength(3),
+        Validators.required,
+      ]),
+      reviewContent: new FormControl('', [
+        Validators.minLength(5),
+        Validators.required,
+      ]),
+      rating: new FormControl('', [
+        Validators.maxLength(3),
+        Validators.required,
+      ]),
       watchedDate: new FormControl('', [Validators.required]),
       movieId: new FormControl(Number(this.idParam)),
       reviewDate: new FormControl(
@@ -87,13 +98,15 @@ export class MovieDetailsComponent implements OnInit, AfterViewInit {
       ),
       userPhoto: new FormControl('/assets/userDefault.png'),
     });
-  }
-
-  ngAfterViewInit() {
-    new Swiper('.mySwiper', {
-      effect: 'cards',
-      grabCursor: true,
-    });
+    console.log('Author é inválido: ', this.formReviews.get('author')?.invalid);
+    console.log(
+      'Content é inválido: ',
+      this.formReviews.get('reviewContent')?.invalid
+    );
+    console.log('Rating é inválido: ', this.formReviews.get('rating')?.invalid);
+    if (this.formReviews.get('author')?.invalid) {
+      this.formInvalido = true;
+    }
   }
 
   loadMovie(idParam: string): void {
@@ -125,9 +138,9 @@ export class MovieDetailsComponent implements OnInit, AfterViewInit {
 
   onSubmit(): void {
     this.reviewService.insertUser(this.formReviews.value).subscribe({
-      next: (val) => console.log(' Form value: ', val),
+      next: () => this.loadReviews(this.idParam),
     });
-    this.loadReviews(this.idParam);
+    this.clearForm();
   }
 
   loadMoreCasts(): void {
@@ -142,8 +155,12 @@ export class MovieDetailsComponent implements OnInit, AfterViewInit {
       });
   }
 
-  loadModal(): void {
-    this.exibirModal = !this.exibirModal;
+  loadModalCast(): void {
+    this.exibirModalCast = !this.exibirModalCast;
+  }
+
+  loadModalAddReview(): void {
+    this.exibirModalAddReview = !this.exibirModalAddReview;
   }
 
   loadReviews(idParam: string): void {
@@ -152,6 +169,13 @@ export class MovieDetailsComponent implements OnInit, AfterViewInit {
         this.reviews = val;
       },
     });
+  }
+
+  clearForm(): void {
+    this.formReviews.get('author')?.reset();
+    this.formReviews.get('reviewContent')?.reset();
+    this.formReviews.get('rating')?.reset();
+    this.formReviews.get('watchedDate')?.reset();
   }
 }
 

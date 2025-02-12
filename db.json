@@ -89,6 +89,86 @@
       "movieId": 1160956,
       "reviewDate": "2025-02-12",
       "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "7b91",
+      "author": "Jubileu",
+      "reviewContent": "Bom",
+      "rating": 6.8,
+      "watchedDate": "2025-02-07",
+      "movieId": 539972,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "0c8c",
+      "author": "Hakuna",
+      "reviewContent": "Assistiria de novo!",
+      "rating": 7.5,
+      "watchedDate": "2025-02-03",
+      "movieId": 539972,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "9c3e",
+      "author": "Matata",
+      "reviewContent": "Isso é viver, é aprender.",
+      "rating": 9,
+      "watchedDate": "2025-01-20",
+      "movieId": 539972,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "5733",
+      "author": "Wandergreison",
+      "reviewContent": "Esse bicho corre muito, num compensa",
+      "rating": 8.2,
+      "watchedDate": "2025-02-11",
+      "movieId": 939243,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "0d35",
+      "author": "Lucas",
+      "reviewContent": "Muito bom",
+      "rating": 9.3,
+      "watchedDate": "2025-02-10",
+      "movieId": 939243,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "1685",
+      "author": "Batatinha",
+      "reviewContent": "Ruim",
+      "rating": 3,
+      "watchedDate": "2025-01-09",
+      "movieId": 939243,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "17dc",
+      "author": "Pedro",
+      "reviewContent": "Gostei, com bastante ação",
+      "rating": 8,
+      "watchedDate": "2025-01-21",
+      "movieId": 993710,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "e996",
+      "author": "Maria",
+      "reviewContent": "Achei bem divertido, filme de ação e comédia",
+      "rating": 8.7,
+      "watchedDate": "2025-01-10",
+      "movieId": 993710,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
     }
   ]
 }
