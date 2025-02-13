@@ -9,12 +9,12 @@
   </div>
   <div class="container-links">
     <div class="container-pages">
-      <a routerLink="/" routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }">{{ languageApplicationCurrent.startPage }}</a>
-      <a routerLink="/movies" [class.selected]="isMoviesActive()" >{{ languageApplicationCurrent.moviesPage }}</a>
+      <a routerLink="/" routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }">{{ 'Início' }}</a>
+      <a routerLink="/movies" [class.selected]="isMoviesActive()" >{{ 'Filmes' }}</a>
     </div>
     <div class="container-outhers">
-      <a href="">{{ languageApplicationCurrent.settings }}</a>
-      <a href="">{{ languageApplicationCurrent.exit }}</a>
+      <a href="">{{ 'Configurações' }}</a>
+      <a href="">{{ 'Sair' }}</a>
     </div>
   </div>
 </nav>

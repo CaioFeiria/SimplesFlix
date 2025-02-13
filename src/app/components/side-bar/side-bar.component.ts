@@ -24,10 +24,7 @@ export class SideBarComponent implements OnInit {
     private languageService: LanguageSelectorService
   ) {}
 
-  ngOnInit(): void {
-    this.languageApplicationCurrent =
-      this.languageService.getLanguageApplication();
-  }
+  ngOnInit(): void {}
 
   isMoviesActive(): boolean {
     return this.router.url.startsWith('/movie');

@@ -1,18 +1,5 @@
 <main class="myContainer">
   <div class="divHeader">
-    <div class="divBreadAndLang">
-      <app-breadcrumb
-        [previousRoutes]="[
-          { icon: '/assets/icons/home.svg', path: 'Início', href: '/' },
-          { icon: '/assets/icons/movie.svg', path: 'Filmes', href: '/movies' }
-        ]"
-        [currentRoute]="{
-          icon: '/assets/icons/info.png',
-          path: movieDetails.title,
-          href: '/movie/' + movieDetails.id
-        }"
-      />
-    </div>
     <app-header-information [movieTitle]="movieDetails.title" />
   </div>
   <section class="containerDetails">
@@ -27,7 +14,7 @@
       <div class="divCast">
         <h3 class="title">Elenco</h3>
         <app-avatar
-          *ngFor="let person of casts"
+          *ngFor="let person of fourFirtsCasts"
           [name]="person.name"
           [desc]="person.character"
           [photo]="person.profile_path"

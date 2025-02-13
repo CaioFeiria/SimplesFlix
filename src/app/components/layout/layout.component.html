@@ -4,6 +4,13 @@
      />
   </aside>
   <main class="main-content">
+    <div class="divBreadAndLang">
+      <app-breadcrumb 
+      />
+    <app-language-selector 
+      (languageSelect)="getCurrentLanguage($event)"
+    />
+  </div>
     <router-outlet />
   </main>
 </section>

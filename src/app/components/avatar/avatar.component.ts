@@ -24,8 +24,6 @@ export class AvatarComponent {
   constructor(private languageService: LanguageSelectorService) {}
 
   ngOnInit(): void {
-    this.languageApplicationCurrent =
-      this.languageService.getLanguageApplication();
     this.sizeImgFn(this.sizeImg);
   }
 

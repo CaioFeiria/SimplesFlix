@@ -5,6 +5,7 @@ import {
   languageDetails,
 } from '../../enums/language.enum';
 import { LanguageSelectorService } from '../../service/language-selector.service';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-language-selector',
@@ -13,33 +14,35 @@ import { LanguageSelectorService } from '../../service/language-selector.service
   styleUrl: './language-selector.component.scss',
 })
 export class LanguageSelector implements OnInit {
-  languageActive!: string;
   flag!: string;
   languageEnum = Language;
   languageDetailsEnum = languageDetails;
   codeLanguage!: string;
-  currentLanguage: Language;
-  @Output() languageSelect = new EventEmitter<Language>();
+  languageActive!: string;
+  languageSelect$ = new Subject<Language>();
 
-  constructor(private languageService: LanguageSelectorService) {
-    this.codeLanguage = this.languageService.getCode();
-    this.currentLanguage = this.languageService.getLanguage();
-  }
+  constructor(private languageService: LanguageSelectorService) {}
 
   ngOnInit(): void {
-    this.languageActive = languageDetails[this.currentLanguage].description;
-    this.flag = languageDetails[this.currentLanguage].flag;
-    console.log('LANG COMPONENT: ', this.codeLanguage);
+    this.languageActive = this.languageService.getLanguageCurrent().description;
+    this.flag = this.languageService.getLanguageCurrent().flag;
+    this.codeLanguage = this.languageService.getLanguageCurrent().code;
+
+    this.loadLanguage();
   }
 
   loadLanguage(): void {
-    this.languageActive = languageDetails[this.currentLanguage].description;
-    this.flag = languageDetails[this.currentLanguage].flag;
+    this.languageService.getLanguage().subscribe({
+      next: (lang) => {
+        this.languageActive = lang.description;
+        this.flag = lang.flag;
+        this.codeLanguage = lang.code;
+      },
+    });
   }
 
   returnLanguage(value: Language): void {
-    this.flag = languageDetails[value].flag;
-    this.languageActive = languageDetails[value].description;
-    this.languageSelect.emit(value);
+    console.log(value);
+    this.languageService.setLanguage(value);
   }
 }

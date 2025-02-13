@@ -1,19 +1,5 @@
 <section>
   <div class="divHeader">
-    <div class="divBreadAndLang">
-        <app-breadcrumb 
-          [previousRoutes]="[
-              { icon: '/assets/icons/home.svg', path: 'Início', href: '/' }
-          ]"
-        
-          [currentRoute]="
-              { icon: '/assets/icons/movie.svg', path: 'Filmes', href: '/movies' }
-          "
-      />
-      <app-language-selector 
-        (languageSelect)="getCurrentLanguage($event)"
-      />
-    </div>
     <app-header-information 
       [movieTitle]="'Filmes'"
     />

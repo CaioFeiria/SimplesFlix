@@ -8,17 +8,8 @@ import { MovieService } from '../../service/movie.service';
 import { MovieListItem } from '../../types/movieListItem';
 import { CommonButtonComponent } from '../../components/common-button/common-button.component';
 import { FormsModule } from '@angular/forms';
-import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { ObservableSearchService } from '../../service/observable-search.service';
-import { Subject, Subscription } from 'rxjs';
 import { LanguageSelectorService } from '../../service/language-selector.service';
-import {
-  Language,
-  LanguageDetails,
-  languageDetails,
-} from '../../enums/language.enum';
-import { LanguageSelector } from '../../components/language-selector/language-selector.component';
-import { Movie } from '../../models/movie.model';
 
 @Component({
   selector: 'app-movies',
@@ -30,8 +21,6 @@ import { Movie } from '../../models/movie.model';
     SearchComponent,
     CommonButtonComponent,
     FormsModule,
-    BreadcrumbComponent,
-    LanguageSelector,
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',
@@ -41,8 +30,8 @@ export class MoviesComponent {
   movieController: number = 8;
   movies: Array<MovieListItem> = [];
   moviesBackup: Array<MovieListItem> = [];
-  currentLanguage!: Language;
   incrementPage: number = 1;
+  codeLanguage: string = '';
 
   constructor(
     private movieService: MovieService,
@@ -51,7 +40,13 @@ export class MoviesComponent {
   ) {}
 
   ngOnInit(): void {
-    this.currentLanguage = this.languageService.getLanguage();
+    this.languageService.getCode().subscribe({
+      next: (code) => {
+        this.codeLanguage = code;
+        this.loadMovies();
+      },
+    });
+    console.log('Init code language no movies:', this.codeLanguage);
     this.loadMovies();
     this.observerService.searched$.subscribe((value) =>
       this.filterMovies(value)
@@ -60,7 +55,7 @@ export class MoviesComponent {
 
   loadMovies(): void {
     this.movieService
-      .getPopularMovies(this.languageService.getCode(), this.incrementPage)
+      .getPopularMovies(this.codeLanguage, this.incrementPage)
       .subscribe({
         next: (res) => {
           console.log(res.results);
@@ -81,15 +76,9 @@ export class MoviesComponent {
       : [...this.moviesBackup];
   }
 
-  getCurrentLanguage(event: Language): void {
-    this.currentLanguage = event;
-    this.languageService.setCodeLanguage(event);
-    this.loadMovies();
-  }
-
   loadMoreMovies(): void {
     this.movieService
-      .getPopularMovies(this.languageService.getCode(), ++this.incrementPage)
+      .getPopularMovies(this.codeLanguage, ++this.incrementPage)
       .subscribe({
         next: (res) => {
           this.moviesBackup = [...this.moviesBackup, ...res.results];

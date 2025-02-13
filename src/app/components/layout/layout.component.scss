@@ -16,6 +16,12 @@
   margin-left: 300px;
   flex: 1;
   padding: 16px;
+
+  .divBreadAndLang {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 @media (max-width: 426px) {

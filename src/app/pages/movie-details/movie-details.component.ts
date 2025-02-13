@@ -36,7 +36,6 @@ import {
     SynopsisCardComponent,
     CommonModule,
     CommonButtonComponent,
-    BreadcrumbComponent,
     AvatarComponent,
     ModalContainerComponent,
     ReviewCardComponent,
@@ -51,7 +50,7 @@ export class MovieDetailsComponent implements OnInit {
   movieDetails!: LoadMovie;
   casts: Array<Cast> = [];
   outherCasts: Array<Cast> = [];
-  fourFirts: Array<Cast> = [];
+  fourFirtsCasts: Array<Cast> = [];
   director!: Directing[];
   idParam: string = '';
   exibirModalCast: boolean = false;
@@ -60,6 +59,7 @@ export class MovieDetailsComponent implements OnInit {
   reviews: Review[] = [];
   formReviews!: FormGroup;
   formInvalido: boolean = true;
+  codeLanguage: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -71,8 +71,14 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.idParam = this.activatedRoute.snapshot.params['id'];
-    this.loadMovie(this.idParam);
     this.loadReviews(this.idParam);
+
+    this.languageService.getCode().subscribe({
+      next: (code) => {
+        this.codeLanguage = code;
+        this.loadMovie(this.idParam);
+      },
+    });
 
     this.formReviews = new FormGroup({
       author: new FormControl('', [
@@ -120,22 +126,18 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   loadMovie(idParam: string): void {
+    this.movieService.getMovieById(this.codeLanguage, idParam).subscribe({
+      next: (res) => {
+        this.movieDetails = res;
+      },
+    });
+
     this.movieService
-      .getMovieById(this.languageService.getCode(), idParam)
-      .subscribe({
-        next: (res) => {
-          this.movieDetails = res;
-        },
-      });
-    this.movieService
-      .getCredtisMovieById(this.languageService.getCode(), idParam)
+      .getCredtisMovieById(this.codeLanguage, idParam)
       .subscribe({
         next: (res) => {
           if (res.cast) {
-            this.fourFirts = [...res.cast.slice(0, 4)];
-            for (let person of this.fourFirts) {
-              this.casts.push(person);
-            }
+            this.fourFirtsCasts = [...res.cast.slice(0, 4)];
           }
           if (res.crew) {
             this.director = res.crew.filter((person: Directing) => {
@@ -166,11 +168,11 @@ export class MovieDetailsComponent implements OnInit {
 
   loadMoreCasts(): void {
     this.movieService
-      .getCredtisMovieById(this.languageService.getCode(), this.idParam)
+      .getCredtisMovieById(this.codeLanguage, this.idParam)
       .subscribe({
         next: (res) => {
           if (res.cast) {
-            this.outherCasts = res.cast.slice(this.fourFirts.length);
+            this.outherCasts = res.cast.slice(this.fourFirtsCasts.length);
           }
         },
       });

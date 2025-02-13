@@ -1,75 +1,55 @@
 import { Injectable } from '@angular/core';
-import { Language, languageDetails } from '../enums/language.enum';
-import { LanguageForApplication } from '../types/languageApplication';
+import {
+  Language,
+  LanguageDetails,
+  languageDetails,
+} from '../enums/language.enum';
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LanguageSelectorService {
-  languageCurrent: Language = Language.Portuguese;
+  private language$: BehaviorSubject<LanguageDetails>;
+  private languageCurrent: Language;
 
-  languagesApplication: { [key in Language]: LanguageForApplication } = {
-    [Language.Portuguese]: {
-      user: 'Stevezinho224',
-      startPage: 'Início',
-      moviesPage: 'Filmes',
-      settings: 'Configurações',
-      exit: 'Sair',
-      movieTitle: 'Haha',
-      labelQtdSearched: 'filme(s) encontrado(s)',
-    },
-    [Language.English]: {
-      user: 'Stevezinho224',
-      startPage: 'Home',
-      moviesPage: 'Movies',
-      settings: 'Settings',
-      exit: 'Leave',
-      movieTitle: 'Haha',
-      labelQtdSearched: 'found movie(s)',
-    },
-    [Language.Russian]: {
-      user: 'Стевесиньо224',
-      startPage: 'Начинать',
-      moviesPage: 'Фильмы',
-      settings: 'Настройки',
-      exit: 'Чтобы выйти',
-      movieTitle: 'Haha',
-      labelQtdSearched: 'Фильм(ы) найден',
-    },
-    [Language.Japan]: {
-      user: 'スティーブジーニョ224',
-      startPage: '始める',
-      moviesPage: '映画',
-      settings: '設定',
-      exit: '外出する',
-      movieTitle: 'Haha',
-      labelQtdSearched: 'フィルムが見つかりました',
-    },
-  };
-
-  constructor() {}
-
-  getLanguageApplication(): LanguageForApplication {
-    return this.languagesApplication[this.languageCurrent];
+  constructor() {
+    this.languageCurrent = Language.Portuguese; // Definir o valor inicial
+    this.language$ = new BehaviorSubject<LanguageDetails>(
+      languageDetails[this.languageCurrent]
+    );
   }
 
+  // Retorna a descrição da linguagem
   getDescription(language: Language): string {
     return languageDetails[language].description;
   }
 
-  getCode(): string {
-    return languageDetails[this.languageCurrent].code;
+  // Retorna o código da linguagem como um Observable
+  getCode(): Observable<string> {
+    return this.getLanguage().pipe(map((lang) => lang.code));
   }
 
-  setCodeLanguage(language: Language): void {
-    this.languageCurrent = language ? language : this.languageCurrent;
-  }
-
-  getLanguage(): Language {
-    return this.languageCurrent;
-  }
-
+  // Altera a linguagem atual
   setLanguage(language: Language): void {
-    this.languageCurrent = language;
+    if (language) {
+      this.languageCurrent = language;
+      this.language$.next(languageDetails[language]);
+    }
+  }
+
+  // Retorna o idioma atual
+  getLanguageCurrent(): LanguageDetails {
+    return languageDetails[this.languageCurrent];
+  }
+
+  // Retorna o Observable da linguagem atual
+  getLanguage(): Observable<LanguageDetails> {
+    return this.language$.asObservable();
+  }
+
+  // Define a linguagem a partir do código
+  setCodeLanguage(language: Language): void {
+    this.setLanguage(language);
   }
 }

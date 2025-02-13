@@ -10,6 +10,6 @@ import { RoutesPath } from '../../types/routesPath';
   styleUrl: './breadcrumb.component.scss',
 })
 export class BreadcrumbComponent {
-  @Input() currentRoute!: RoutesPath;
-  @Input() previousRoutes!: RoutesPath[];
+  @Input() currentRoute?: RoutesPath;
+  @Input() previousRoutes?: RoutesPath[];
 }
