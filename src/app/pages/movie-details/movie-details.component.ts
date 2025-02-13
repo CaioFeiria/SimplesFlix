@@ -27,7 +27,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import Swiper from 'swiper';
 
 @Component({
   selector: 'app-movie-details',
@@ -55,8 +54,9 @@ export class MovieDetailsComponent implements OnInit {
   fourFirts: Array<Cast> = [];
   director!: Directing[];
   idParam: string = '';
-  exibirModalCast = false;
-  exibirModalAddReview = false;
+  exibirModalCast: boolean = false;
+  exibirModalAddReview: boolean = false;
+  exibirModalErroReview: boolean = false;
   reviews: Review[] = [];
   formReviews!: FormGroup;
   formInvalido: boolean = true;
@@ -79,19 +79,44 @@ export class MovieDetailsComponent implements OnInit {
         Validators.minLength(3),
         Validators.required,
       ]),
-      reviewContent: new FormControl('', [
-        Validators.minLength(3),
+      reviewContent: new FormControl('', [Validators.required]),
+      rating: new FormControl('', [
+        Validators.max(10),
+        Validators.min(0),
         Validators.required,
       ]),
-      rating: new FormControl('', [Validators.max(10), Validators.required]),
-      watchedDate: new FormControl('', [Validators.required]),
+      watchedDate: new FormControl(
+        this.datePipe.transform(new Date(), 'yyyy-MM-dd'),
+        [Validators.required]
+      ),
       movieId: new FormControl(Number(this.idParam)),
       reviewDate: new FormControl(
         this.datePipe.transform(new Date(), 'yyyy-MM-dd')
       ),
       userPhoto: new FormControl('/assets/userDefault.png'),
     });
+
     this.formValidation();
+  }
+
+  dateNotInFuture(): boolean {
+    const watchedDate = new Date(this.formReviews.get('watchedDate')?.value);
+    const currentDate = new Date();
+
+    if (watchedDate > currentDate) {
+      return false;
+    }
+    return true;
+  }
+
+  dateNotBeforeReleaseDate(): boolean {
+    const watchedDate = new Date(this.formReviews.get('watchedDate')?.value);
+    const releaseDate = new Date(this.movieDetails.release_date);
+
+    if (watchedDate < releaseDate) {
+      return false;
+    }
+    return true;
   }
 
   loadMovie(idParam: string): void {
@@ -122,10 +147,21 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.reviewService.insertUser(this.formReviews.value).subscribe({
-      next: () => this.loadReviews(this.idParam),
-    });
-    this.clearForm();
+    if (!this.formInvalido) {
+      if (this.dateNotInFuture() && this.dateNotBeforeReleaseDate()) {
+        this.reviewService.insertReview(this.formReviews.value).subscribe({
+          next: () => {
+            this.loadReviews(this.idParam);
+            this.clearForm();
+            this.exibirModalAddReview = true;
+          },
+          error: (err) => {
+            console.log(err);
+            this.exibirModalErroReview = true;
+          },
+        });
+      }
+    }
   }
 
   loadMoreCasts(): void {
@@ -148,6 +184,10 @@ export class MovieDetailsComponent implements OnInit {
     this.exibirModalAddReview = !this.exibirModalAddReview;
   }
 
+  loadModalErroReview(): void {
+    this.exibirModalErroReview = !this.exibirModalErroReview;
+  }
+
   loadReviews(idParam: string): void {
     this.reviewService.getReviewsByMovie(idParam).subscribe({
       next: (val) => {
@@ -158,7 +198,8 @@ export class MovieDetailsComponent implements OnInit {
 
   formValidation(): void {
     this.formReviews.valueChanges.subscribe({
-      next: () => {
+      next: (val) => {
+        console.log('AQUIIIIIIIII: ', val);
         if (this.formReviews.invalid) {
           this.formInvalido = true;
         } else {

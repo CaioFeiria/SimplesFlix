@@ -89,12 +89,16 @@
               id="name"
               placeholder="Ex: Josias"
             />
-            <p *ngIf="formReviews.get('author')?.invalid && formReviews.get('author')?.touched"
+            <p *ngIf="formReviews.get('author')?.invalid && formReviews.get('author')?.touched" 
             style="color: red; font-size: 11px;">
-              Nome é obrigatório, mínimo 3 caracteres.
+              <ng-container *ngIf="formReviews.get('author')?.hasError('required')">
+                Nome é obrigatório.
+              </ng-container>
+              <ng-container *ngIf="formReviews.get('author')?.hasError('minlength')">
+                O nome precisa ter pelo menos 3 caracteres.
+              </ng-container>
             </p>
           </div>
-  
           <div class="divInpRating">
             <label for="rating">Nota</label>
             <input
@@ -104,10 +108,18 @@
               id="rating"
               placeholder="Ex: 7.6"
             />
-            <p *ngIf="formReviews.get('rating')?.invalid && formReviews.get('rating')?.touched"
+            <p *ngIf="formReviews.get('rating')?.invalid && formReviews.get('rating')?.touched" 
             style="color: red; font-size: 11px;">
-              Nota é obrigatória, números de 0 a 10.
-            </p>
+              <ng-container *ngIf="formReviews.get('rating')?.hasError('required')">
+                Nota é obrigatória.
+              </ng-container>
+              <ng-container *ngIf="formReviews.get('rating')?.hasError('max')">
+                A nota não pode ser maior que 10.
+              </ng-container>
+              <ng-container *ngIf="formReviews.get('rating')?.hasError('min')">
+                A nota não pode ser menor que 0.
+              </ng-container>
+            </p>            
           </div>
   
           <div class="divInpDate">
@@ -118,9 +130,17 @@
               name="watchedDate"
               id="watchedDate"
             />
-            <p *ngIf="formReviews.get('watchedDate')?.invalid && formReviews.get('watchedDate')?.touched"
+            <p *ngIf="formReviews.get('watchedDate')?.invalid || formReviews.get('watchedDate')?.touched"
             style="color: red; font-size: 11px;">
-              Data é obrigatória.
+              <ng-container *ngIf="formReviews.get('watchedDate')?.hasError('required')">
+                Data é obrigatória.
+              </ng-container>
+              <ng-container *ngIf="!this.dateNotInFuture()">
+                Data não pode ser posterior a data de hoje.
+              </ng-container>
+              <ng-container *ngIf="!this.dateNotBeforeReleaseDate()">
+                Data não pode ser anterior ao lançamento do filme.
+              </ng-container>
             </p>
           </div>
         </div>
@@ -149,9 +169,6 @@
         />
         </div>
       </form>
-      <!-- <div class="divUndraw">
-        <img src="assets/undraw_forms.svg" width="550" alt="Desenho forms">
-      </div> -->
     </div>
   </section>
 </main>
@@ -166,6 +183,20 @@
     </div>
     <div app-modal-footer class="modal-footer">
       <app-common-button label="Fechar" (click)="loadModalAddReview()" />
+    </div>
+  </app-modal-container>
+</ng-container>
+<!-- Modal erro review -->
+<ng-container *ngIf="exibirModalErroReview">
+  <app-modal-container (visivelChange)="loadModalErroReview()" [isAlert]="true">
+    <div app-modal-title class="modal-title">
+      <h2>Alerta</h2>
+    </div>
+    <div app-modal-body class="modal-body">
+      <p>Não foi possivel publicar sua avaliação, tente novamente mais tarde.</p>
+    </div>
+    <div app-modal-footer class="modal-footer">
+      <app-common-button label="Fechar" (click)="loadModalErroReview()" />
     </div>
   </app-modal-container>
 </ng-container>

@@ -22,7 +22,7 @@ export class ReviewsApiService {
     );
   }
 
-  insertUser(review: Review): Observable<Review> {
+  insertReview(review: Review): Observable<Review> {
     return this.http.post<Review>(this.apiUrl, { ...review });
   }
 }
