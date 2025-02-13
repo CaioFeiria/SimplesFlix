@@ -14,17 +14,7 @@ export class SearchComponent {
 
   constructor(private observerService: ObservableSearchService) {}
 
-  ngOnInit(): void {
-    console.log(this.search);
-  }
-
   searched(): void {
     this.observerService.outputSearchedValue(this.search);
   }
-
-  // @Output() searched = new EventEmitter<string>();
-
-  // searchChanges(): void {
-  //   this.searched.emit(this.search);
-  // }
 }

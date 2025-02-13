@@ -10,7 +10,7 @@ import { CommonButtonComponent } from '../../components/common-button/common-but
 import { FormsModule } from '@angular/forms';
 import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { ObservableSearchService } from '../../service/observable-search.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { LanguageSelectorService } from '../../service/language-selector.service';
 import {
   Language,
@@ -18,6 +18,7 @@ import {
   languageDetails,
 } from '../../enums/language.enum';
 import { LanguageSelector } from '../../components/language-selector/language-selector.component';
+import { Movie } from '../../models/movie.model';
 
 @Component({
   selector: 'app-movies',
@@ -35,14 +36,13 @@ import { LanguageSelector } from '../../components/language-selector/language-se
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',
 })
-export class MoviesComponent implements OnDestroy {
+export class MoviesComponent {
   encodeURIComponent = encodeURIComponent;
   movieController: number = 8;
   movies: Array<MovieListItem> = [];
   moviesBackup: Array<MovieListItem> = [];
-  count = signal(1);
   currentLanguage!: Language;
-  private subscription!: Subscription;
+  incrementPage: number = 1;
 
   constructor(
     private movieService: MovieService,
@@ -53,33 +53,32 @@ export class MoviesComponent implements OnDestroy {
   ngOnInit(): void {
     this.currentLanguage = this.languageService.getLanguage();
     this.loadMovies();
+    this.observerService.searched$.subscribe((value) =>
+      this.filterMovies(value)
+    );
   }
 
   loadMovies(): void {
     this.movieService
-      .getPopularMovies(this.languageService.getCode(), 1)
+      .getPopularMovies(this.languageService.getCode(), this.incrementPage)
       .subscribe({
         next: (res) => {
           console.log(res.results);
           this.movies = res.results;
           this.moviesBackup = res.results;
-          this.count.set(res.results.length);
         },
         error: (err) => {
           console.error(err);
         },
       });
-    this.subscription = this.observerService.searched$.subscribe((value) => {
-      if (!value.trim()) {
-        this.movies = this.moviesBackup;
-        this.count.update((v) => (v = this.movies.length));
-      } else {
-        this.movies = this.movies.filter((movie) =>
-          movie.title.toLowerCase().includes(value.toLowerCase())
-        );
-        this.count.update((v) => (v = this.movies.length));
-      }
-    });
+  }
+
+  filterMovies(search: string): void {
+    this.movies = search.trim()
+      ? this.moviesBackup.filter((movie) =>
+          movie.title.toLowerCase().includes(search.toLowerCase())
+        )
+      : [...this.moviesBackup];
   }
 
   getCurrentLanguage(event: Language): void {
@@ -89,27 +88,14 @@ export class MoviesComponent implements OnDestroy {
   }
 
   loadMoreMovies(): void {
-    // const nextMovies = this.movieService.getMoreMovies(this.movieController, 8);
-    // this.movies = [...this.movies, ...nextMovies];
-    // this.movieController += 8;
+    this.movieService
+      .getPopularMovies(this.languageService.getCode(), ++this.incrementPage)
+      .subscribe({
+        next: (res) => {
+          this.moviesBackup = [...this.moviesBackup, ...res.results];
+          this.movies = [...this.moviesBackup];
+        },
+        error: (err) => console.error(err),
+      });
   }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  // filterMovies(titleMovie: string): void {
-  //   console.log(titleMovie);
-  //   if (!titleMovie.trim()) {
-  //     this.movies = this.movieService.getMoviesForListPage(
-  //       this.movieController
-  //     );
-  //     this.count.update((v) => (v = this.movies.length));
-  //   } else {
-  //     this.movies = this.movies.filter((movie) =>
-  //       movie.title.toLowerCase().includes(titleMovie.toLowerCase())
-  //     );
-  //     this.count.update((v) => (v = this.movies.length));
-  //   }
-  // }
 }

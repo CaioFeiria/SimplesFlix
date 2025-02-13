@@ -229,6 +229,16 @@
       "movieId": 1160956,
       "reviewDate": "2025-02-12",
       "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "e78a",
+      "author": "Laion",
+      "reviewContent": "Filme maravilhoso com os gráficos de forma mais realista!",
+      "rating": 7.8,
+      "watchedDate": "2025-02-10",
+      "movieId": 762509,
+      "reviewDate": "2025-02-12",
+      "userPhoto": "/assets/userDefault.png"
     }
   ]
 }

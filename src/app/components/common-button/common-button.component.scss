@@ -1,7 +1,3 @@
-div {
-  display: flex;
-  justify-content: center;
-
   .btnCommon {
     padding: 12px 13px;
     border: none;
@@ -19,5 +15,12 @@ div {
       font-size: 17px;
     }
   }
+
+.btnDisable {
+  background-color: #6d93fc !important;
+}
+
+.btnDisable:hover {
+  cursor: not-allowed;
 }
   

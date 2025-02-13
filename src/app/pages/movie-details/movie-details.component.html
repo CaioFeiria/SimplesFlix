@@ -69,7 +69,7 @@
         <ng-content>
           <app-review-card
             [isNotEmpty]="false"
-            reviewContent="Nenhum review publicado sobre esse filme!"
+            reviewContent="Nenhuma avaliação publicada sobre esse filme!"
           />
         </ng-content>
       }
@@ -140,13 +140,14 @@
           </p>
         </div>
         
+        <div class="divBtnForm">
           <app-common-button 
-            [label]="'Publicar'" 
-            type="submit"
-            [isDisable]="formInvalido"
-            (click)="loadModalAddReview()"
-            class="divBtnForm"
-          />
+          [label]="'Publicar'" 
+          type="submit"
+          [isDisable]="formInvalido"
+          [action]="loadModalAddReview"
+        />
+        </div>
       </form>
       <!-- <div class="divUndraw">
         <img src="assets/undraw_forms.svg" width="550" alt="Desenho forms">
