@@ -17,7 +17,9 @@
     "searchMovie": "Search for a movie..."
   },
   "home": {
-    "title": "Welcome!"
+    "bannerListMovies": "Create your movie list",
+    "messageFavorites": "Save your favorite movies and stay up to date with all the details.",
+    "yourFavorites": "Your favorites"
   },
   "movies": {
     "title": "Movies",

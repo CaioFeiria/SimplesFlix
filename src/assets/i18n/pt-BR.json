@@ -17,7 +17,9 @@
     "searchMovie": "Buscar um filme..."
   },
   "home": {
-    "title": "Bem-vindo!"
+    "bannerListMovies": "Crie sua lista de filmes",
+    "messageFavorites": "Salve seus filmes favoritos e fique por dentro de todos os detalhes.",
+    "yourFavorites": "Seus favoritos"
   },
   "movies": {
     "title": "Filmes",
@@ -29,16 +31,16 @@
       "synopsis": "Sinopse",
       "emptySynopsis": "Sem sinopse.",
       "reviewCard": {
-        "emptyReview": "Nenhuma avaliação publicada para este filme!",
-        "addReview": "Adicionar uma avaliação",
+        "emptyReview": "Nenhuma resenha publicada para este filme!",
+        "addReview": "Adicionar uma resenha",
         "rate": "Avaliar",
         "watchedIn": "Assistido em",
         "name": "Nome",
-        "reviewComment": "Comentário",
+        "reviewComment": "Comentário da resenha",
         "reviewPlaceholder": "Ex: Muito bom...",
         "assistedIn": "Assistido em",
         "errorsForm": {
-          "nameRequired": "Nome é obrigatório.",
+          "nameRequired": "O nome é obrigatório.",
           "nameCharacters": "O nome precisa ter pelo menos 3 caracteres.",
           "rateRequired": "A avaliação é obrigatória.",
           "rateGreaterTen": "A nota não pode ser maior que 10.",
@@ -46,19 +48,19 @@
           "watchedInRequired": "A data é obrigatória.",
           "watchedAfterCurrrentDate": "A data não pode ser posterior à data de hoje.",
           "wacthedBeforeReleaseDate": "A data não pode ser anterior à data de lançamento do filme.",
-          "reviewRequired": "O comentário é obrigatório."
+          "reviewRequired": "A resenha é obrigatória."
         }
       }
     }
   },
   "modal": {
     "modalAddReview": {
-      "title": "Adicionar Avaliação",
-      "message": "Sua avaliação foi publicada com sucesso!"
+      "title": "Adicionar Resenha",
+      "message": "Sua resenha foi publicada com sucesso!"
     },
     "modalErroReview": {
-      "title": "Aviso",
-      "message": "Não conseguimos publicar sua avaliação, por favor, tente novamente mais tarde."
+      "title": "Alerta",
+      "message": "Não conseguimos publicar sua resenha, por favor, tente novamente mais tarde."
     },
     "modalCast": {
       "title": "Elenco"

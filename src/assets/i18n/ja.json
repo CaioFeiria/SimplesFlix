@@ -1,8 +1,8 @@
 {
   "actions": {
     "confirm": "確認",
-    "loadMore": "さらに読み込む",
-    "loadMorePlus": "さらに読み込む +",
+    "loadMore": "もっと読み込む",
+    "loadMorePlus": "もっと読み込む +",
     "publish": "公開する",
     "close": "閉じる",
     "watchMovies": "映画を見る"
@@ -17,7 +17,9 @@
     "searchMovie": "映画を検索..."
   },
   "home": {
-    "title": "ようこそ！"
+    "bannerListMovies": "映画リストを作成",
+    "messageFavorites": "お気に入りの映画を保存し、すべての詳細をチェックしてください。",
+    "yourFavorites": "あなたのお気に入り"
   },
   "movies": {
     "title": "映画",
@@ -29,23 +31,23 @@
       "synopsis": "あらすじ",
       "emptySynopsis": "あらすじはありません。",
       "reviewCard": {
-        "emptyReview": "この映画には公開されたレビューがありません！",
+        "emptyReview": "この映画のレビューは公開されていません！",
         "addReview": "レビューを追加",
         "rate": "評価",
         "watchedIn": "視聴日",
         "name": "名前",
-        "reviewComment": "レビュー",
+        "reviewComment": "レビューコメント",
         "reviewPlaceholder": "例: とても良い...",
-        "assistedIn": "視聴日",
+        "assistedIn": "視聴場所",
         "errorsForm": {
           "nameRequired": "名前は必須です。",
-          "nameCharacters": "名前は3文字以上である必要があります。",
+          "nameCharacters": "名前は3文字以上でなければなりません。",
           "rateRequired": "評価は必須です。",
           "rateGreaterTen": "評価は10を超えてはいけません。",
-          "rateSmallerZero": "評価は0未満にはできません。",
-          "watchedInRequired": "日付は必須です。",
-          "watchedAfterCurrrentDate": "日付は今日以降にはできません。",
-          "wacthedBeforeReleaseDate": "日付は映画の公開前にすることはできません。",
+          "rateSmallerZero": "評価は0未満ではいけません。",
+          "watchedInRequired": "視聴日は必須です。",
+          "watchedAfterCurrrentDate": "視聴日は今日以降でなければなりません。",
+          "wacthedBeforeReleaseDate": "視聴日は映画の公開日以前であってはなりません。",
           "reviewRequired": "レビューは必須です。"
         }
       }
@@ -58,7 +60,7 @@
     },
     "modalErroReview": {
       "title": "警告",
-      "message": "レビューを公開できませんでした。後でもう一度お試しください。"
+      "message": "レビューの公開に失敗しました。後で再試行してください。"
     },
     "modalCast": {
       "title": "キャスト"
