@@ -1,8 +1,8 @@
 import {
   AfterViewInit,
   Component,
-  OnInit,
   CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
 } from '@angular/core';
 import { HeaderInformationComponent } from '../../components/header-information/header-information.component';
 import { CardDetailsMovieComponent } from '../../components/card-details-movie/card-details-movie.component';

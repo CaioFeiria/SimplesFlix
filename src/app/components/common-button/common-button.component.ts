@@ -12,6 +12,7 @@ export class CommonButtonComponent {
   @Input() icon: string = '';
   @Input() type: string = '';
   @Input() isDisable: boolean = false;
+  @Input() colorWhite: boolean = false;
   @Input() action!: () => void;
   //@Input() action!: VoidFunction;
 }
