@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
-import { ObservableSearchService } from '../../service/observable-search.service';
+import { ObservableSearchService } from '../../service/search.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search',
-  imports: [FormsModule],
+  imports: [FormsModule, TranslatePipe],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })

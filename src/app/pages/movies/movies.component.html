@@ -1,13 +1,13 @@
 <section>
   <div class="divHeader">
     <app-header-information 
-      [movieTitle]="'Filmes'"
+      [movieTitle]="'movies.title' | translate"
     />
   </div>
   <div>
     <app-search 
     />
-    <p class="searchedMovies">{{ this.movies.length | number:'2.0-1'}} filme(s) listado(s) </p>
+    <p class="searchedMovies">{{ this.movies.length | number:'2.0-1'}} {{ 'movies.listedMovies' | translate }} </p>
   </div>
   <div class="containerMovies">
     <ng-content *ngIf="movies.length > 0; else emptyMovies">
@@ -17,18 +17,18 @@
               [image]="movie.poster_path"
               [movieTitle]="movie.title"
               [releaseDate]="movie.release_date" 
-              [routerLink]="['/movie', movie.id]" 
+              [routerLinkImg]="['/movie', movie.id]"
             />
         </div>
       }
     </ng-content>
     <ng-template #emptyMovies>
-      <p class="emptyMovies">Nenhum filme encontrado.</p>
+      <p class="emptyMovies">{{ 'movies.emptyMovies' | translate }}</p>
     </ng-template>
   </div>
   <div class="divBtnLoad">
       <app-common-button 
-        label="Ver mais"
+        [label]="'actions.loadMore' | translate"
         icon="/assets/seta.png"
         (click)="loadMoreMovies()"
       />

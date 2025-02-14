@@ -9,12 +9,12 @@
   </div>
   <div class="container-links">
     <div class="container-pages">
-      <a routerLink="/" routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }">{{ 'Início' }}</a>
-      <a routerLink="/movies" [class.selected]="isMoviesActive()" >{{ 'Filmes' }}</a>
+      <a routerLink="/" routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }">{{ 'sidenav.home' | translate }}</a>
+      <a routerLink="/movies" [class.selected]="isMoviesActive()" >{{ 'sidenav.movies' | translate }}</a>
     </div>
     <div class="container-outhers">
-      <a href="">{{ 'Configurações' }}</a>
-      <a href="">{{ 'Sair' }}</a>
+      <a href="">{{ 'sidenav.settings' | translate }}</a>
+      <a href="">{{ 'sidenav.logout' | translate }}</a>
     </div>
   </div>
 </nav>

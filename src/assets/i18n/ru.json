@@ -1,0 +1,66 @@
+{
+  "actions": {
+    "confirm": "Подтвердить",
+    "loadMore": "Загрузить еще",
+    "loadMorePlus": "Загрузить еще +",
+    "publish": "Опубликовать",
+    "close": "Закрыть"
+  },
+  "sidenav": {
+    "home": "Главная",
+    "movies": "Фильмы",
+    "settings": "Настройки",
+    "logout": "Выйти"
+  },
+  "search": {
+    "searchMovie": "Поиск фильма..."
+  },
+  "home": {
+    "title": "Добро пожаловать!"
+  },
+  "movies": {
+    "title": "Фильмы",
+    "listedMovies": "перечисленные фильмы",
+    "emptyMovies": "Фильмы не найдены.",
+    "details": {
+      "director": "Режиссер",
+      "casting": "Актерский состав",
+      "synopsis": "Сюжет",
+      "emptySynopsis": "Нет синопсиса.",
+      "reviewCard": {
+        "emptyReview": "Для этого фильма нет опубликованных отзывов!",
+        "addReview": "Добавить отзыв",
+        "rate": "Оценить",
+        "watchedIn": "Посмотрено в",
+        "name": "Имя",
+        "reviewComment": "Отзыв",
+        "reviewPlaceholder": "Пример: Очень хорошо...",
+        "assistedIn": "Посмотрено в",
+        "errorsForm": {
+          "nameRequired": "Имя обязательно.",
+          "nameCharacters": "Имя должно содержать хотя бы 3 символа.",
+          "rateRequired": "Оценка обязательна.",
+          "rateGreaterTen": "Оценка не может быть больше 10.",
+          "rateSmallerZero": "Оценка не может быть меньше 0.",
+          "watchedInRequired": "Дата обязательна.",
+          "watchedAfterCurrrentDate": "Дата не может быть позже сегодняшнего дня.",
+          "wacthedBeforeReleaseDate": "Дата не может быть раньше даты выхода фильма.",
+          "reviewRequired": "Отзыв обязателен."
+        }
+      }
+    }
+  },
+  "modal": {
+    "modalAddReview": {
+      "title": "Добавить отзыв",
+      "message": "Ваш отзыв был успешно опубликован!"
+    },
+    "modalErroReview": {
+      "title": "Предупреждение",
+      "message": "Не удалось опубликовать ваш отзыв, пожалуйста, попробуйте позже."
+    },
+    "modalCast": {
+      "title": "Актерский состав"
+    }
+  }
+}

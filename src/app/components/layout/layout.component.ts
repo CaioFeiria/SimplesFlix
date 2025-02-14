@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { SideBarComponent } from '../side-bar/side-bar.component';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { LanguageSelector } from '../language-selector/language-selector.component';
-import { Language } from '../../enums/language.enum';
-import { LanguageSelectorService } from '../../service/language-selector.service';
+import { BreadCrumbService } from '../../service/bread-crumb.service';
 
 @Component({
   selector: 'app-layout',
@@ -18,12 +22,13 @@ import { LanguageSelectorService } from '../../service/language-selector.service
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
-  currentLanguage!: Language;
-
-  constructor(private languageService: LanguageSelectorService) {}
-
-  getCurrentLanguage(event: Language): void {
-    this.currentLanguage = event;
-    this.languageService.setCodeLanguage(event);
-  }
+  // constructor(
+  //   private route: ActivatedRoute,
+  //   private breadcrumbService: BreadCrumbService
+  // ) {}
+  // ngOnInit() {
+  //   this.route.firstChild?.data.subscribe((data) => {
+  //     this.breadcrumbService.setBreadcrumbs(data['breadcrumb'] || []);
+  //   });
+  // }
 }

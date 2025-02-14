@@ -1,0 +1,66 @@
+{
+  "actions": {
+    "confirm": "確認",
+    "loadMore": "さらに読み込む",
+    "loadMorePlus": "さらに読み込む +",
+    "publish": "公開する",
+    "close": "閉じる"
+  },
+  "sidenav": {
+    "home": "ホーム",
+    "movies": "映画",
+    "settings": "設定",
+    "logout": "ログアウト"
+  },
+  "search": {
+    "searchMovie": "映画を検索..."
+  },
+  "home": {
+    "title": "ようこそ！"
+  },
+  "movies": {
+    "title": "映画",
+    "listedMovies": "リストされた映画",
+    "emptyMovies": "映画が見つかりません。",
+    "details": {
+      "director": "監督",
+      "casting": "キャスト",
+      "synopsis": "あらすじ",
+      "emptySynopsis": "あらすじはありません。",
+      "reviewCard": {
+        "emptyReview": "この映画には公開されたレビューがありません！",
+        "addReview": "レビューを追加",
+        "rate": "評価",
+        "watchedIn": "視聴日",
+        "name": "名前",
+        "reviewComment": "レビュー",
+        "reviewPlaceholder": "例: とても良い...",
+        "assistedIn": "視聴日",
+        "errorsForm": {
+          "nameRequired": "名前は必須です。",
+          "nameCharacters": "名前は3文字以上である必要があります。",
+          "rateRequired": "評価は必須です。",
+          "rateGreaterTen": "評価は10を超えてはいけません。",
+          "rateSmallerZero": "評価は0未満にはできません。",
+          "watchedInRequired": "日付は必須です。",
+          "watchedAfterCurrrentDate": "日付は今日以降にはできません。",
+          "wacthedBeforeReleaseDate": "日付は映画の公開前にすることはできません。",
+          "reviewRequired": "レビューは必須です。"
+        }
+      }
+    }
+  },
+  "modal": {
+    "modalAddReview": {
+      "title": "レビューを追加",
+      "message": "レビューは正常に公開されました！"
+    },
+    "modalErroReview": {
+      "title": "警告",
+      "message": "レビューを公開できませんでした。後でもう一度お試しください。"
+    },
+    "modalCast": {
+      "title": "キャスト"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { RoutesPath } from '../../types/routesPath';
+import { Breadcrumb } from '../../@types/breadCrumb';
 import { CommonModule } from '@angular/common';
 import { LanguageSelector } from '../language-selector/language-selector.component';
 
@@ -11,5 +11,5 @@ import { LanguageSelector } from '../language-selector/language-selector.compone
 })
 export class HeaderInformationComponent {
   @Input() movieTitle!: string;
-  @Input() routes!: RoutesPath[];
+  @Input() routes!: Breadcrumb[];
 }

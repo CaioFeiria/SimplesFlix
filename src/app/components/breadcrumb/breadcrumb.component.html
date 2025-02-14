@@ -1,17 +1,10 @@
-<ul class="infoPages">
-  @for (item of previousRoutes; track $index) {
-    <li>
-      <a [routerLink]="item.href" class="previousPage">
-        <img [src]="item.icon" alt="Icon">
-        {{ item.path }}
-        <span> > </span>
-      </a>
+<nav class="breadcrumb">
+  <ol>
+    <li *ngFor="let item of breadcrumbs; let last = last">
+      <a *ngIf="!last; else lastItem" [routerLink]="item.url">{{ item.label }}</a>
+      <ng-template #lastItem>
+        <span>{{ item.label }}</span>
+      </ng-template>
     </li>
-  }
-  <li>
-    <!-- <a [routerLink]="currentRoute.href" class="currentPage">
-      <img [src]="currentRoute.icon" alt="Icon" width="13" height="13">
-      {{ currentRoute.path }}
-    </a> -->
-  </li>
-</ul>
+  </ol>
+</nav>

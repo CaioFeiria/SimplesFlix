@@ -11,14 +11,14 @@ import { SynopsisCardComponent } from '../../components/synopsis-card/synopsis-c
 import { CommonModule, DatePipe } from '@angular/common';
 import { MovieService } from '../../service/movie.service';
 import { CommonButtonComponent } from '../../components/common-button/common-button.component';
-import { LoadMovie } from '../../types/loadMovie';
+import { LoadMovie } from '../../@types/loadMovie';
 import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { AvatarComponent } from '../../components/avatar/avatar.component';
-import { Cast } from '../../types/cast';
-import { Directing } from '../../types/directing';
+import { Cast } from '../../@types/cast';
+import { Directing } from '../../@types/directing';
 import { ModalContainerComponent } from '../../components/modal/modal-container/modal-container.component';
 import { LanguageSelectorService } from '../../service/language-selector.service';
-import { Review } from '../../types/review';
+import { Review } from '../../@types/review';
 import { ReviewsApiService } from '../../service/reviews-api.service';
 import { ReviewCardComponent } from '../../components/review-card/review-card.component';
 import {
@@ -27,6 +27,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { BreadCrumbService } from '../../service/bread-crumb.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-movie-details',
@@ -40,6 +42,7 @@ import {
     ModalContainerComponent,
     ReviewCardComponent,
     ReactiveFormsModule,
+    TranslatePipe,
   ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.scss',
@@ -66,7 +69,8 @@ export class MovieDetailsComponent implements OnInit {
     private movieService: MovieService,
     private languageService: LanguageSelectorService,
     private reviewService: ReviewsApiService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private breadcrumbService: BreadCrumbService
   ) {}
 
   ngOnInit(): void {
@@ -129,6 +133,9 @@ export class MovieDetailsComponent implements OnInit {
     this.movieService.getMovieById(this.codeLanguage, idParam).subscribe({
       next: (res) => {
         this.movieDetails = res;
+        const currentBreadcrumbs =
+          this.breadcrumbService.breadcrumbsSubject.value;
+        this.breadcrumbService.updateLastBreadcrumb(res.title);
       },
     });
 

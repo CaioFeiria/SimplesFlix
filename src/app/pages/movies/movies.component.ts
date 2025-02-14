@@ -3,24 +3,24 @@ import { MovieCardComponent } from '../../components/movie-card/movie-card.compo
 import { HeaderInformationComponent } from '../../components/header-information/header-information.component';
 import { SearchComponent } from '../../components/search/search.component';
 import { CommonModule, DatePipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { MovieService } from '../../service/movie.service';
-import { MovieListItem } from '../../types/movieListItem';
+import { MovieListItem } from '../../@types/movieListItem';
 import { CommonButtonComponent } from '../../components/common-button/common-button.component';
 import { FormsModule } from '@angular/forms';
-import { ObservableSearchService } from '../../service/observable-search.service';
+import { ObservableSearchService } from '../../service/search.service';
 import { LanguageSelectorService } from '../../service/language-selector.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-movies',
   imports: [
     CommonModule,
     MovieCardComponent,
-    RouterLink,
     HeaderInformationComponent,
     SearchComponent,
     CommonButtonComponent,
     FormsModule,
+    TranslatePipe,
   ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.scss',
@@ -46,7 +46,6 @@ export class MoviesComponent {
         this.loadMovies();
       },
     });
-    console.log('Init code language no movies:', this.codeLanguage);
     this.loadMovies();
     this.observerService.searched$.subscribe((value) =>
       this.filterMovies(value)

@@ -249,6 +249,26 @@
       "movieId": 1212142,
       "reviewDate": "2025-02-13",
       "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "64b6",
+      "author": "dawda",
+      "reviewContent": "dwada",
+      "rating": 2,
+      "watchedDate": "2025-02-05",
+      "movieId": 1241982,
+      "reviewDate": "2025-02-14",
+      "userPhoto": "/assets/userDefault.png"
+    },
+    {
+      "id": "7adb",
+      "author": "dawd",
+      "reviewContent": "dwad",
+      "rating": 2,
+      "watchedDate": "2025-02-04",
+      "movieId": 1241982,
+      "reviewDate": "2025-02-14",
+      "userPhoto": "/assets/userDefault.png"
     }
   ]
 }

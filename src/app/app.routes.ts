@@ -13,14 +13,17 @@ export const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        data: { breadcrumb: 'Início' },
       },
       {
         path: 'movies',
         component: MoviesComponent,
+        data: { breadcrumb: 'Filmes' },
       },
       {
         path: 'movie/:id',
         component: MovieDetailsComponent,
+        data: { breadcrumb: 'Detalhes' },
       },
     ],
   },

@@ -3,7 +3,7 @@
     <app-avatar
       [photoLocal]="true"
       [name]="author"
-      [desc]="'Em: ' + (reviewDate | date : 'shortDate')"
+      [desc]="(reviewDate | date : 'shortDate':'' : codeDate)"
       [photo]="userPhoto"
     />
   </div>
@@ -16,7 +16,7 @@
   <div class="footerCard">
     <p>{{ reviewContent }}</p>
     <div class="divWatched">
-      Assistido em: {{ watchedDate | date : "mediumDate" }}
+      {{ 'movies.details.reviewCard.assistedIn' | translate }} {{ watchedDate | date : "mediumDate":'' : codeDate }}
     </div>
   </div>
 </section>
@@ -24,7 +24,7 @@
 <ng-template #empty>
   <section class="reviewCardEmpty">
     <div>
-      <p>{{ reviewContent }}</p>
+      <p>{{ reviewContent | translate }}<p>
     </div>
   </section>
 </ng-template>

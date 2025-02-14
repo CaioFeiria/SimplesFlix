@@ -16,7 +16,7 @@
         </div>
         <div class="description">
           <p>
-            Dirigido por 
+            {{ 'movies.details.director' | translate }} 
           @for (person of director; track $index) {
             <strong>
               <span *ngIf="$index != 0">,</span>
@@ -25,7 +25,7 @@
           }
           <strong>.</strong>
         </p>
-          <p>{{ releaseDate | date:'longDate'}}</p>
+          <p>{{ releaseDate | date:'longDate': '': codeDate}}</p>
         </div>
       </div>
       <div [ngClass]="genres.length >= 3 ? 'filmeGenre-space-between' : 'filmeGenre-center'">

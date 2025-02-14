@@ -1,13 +1,13 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Movie } from '../models/movie.model';
-import { MovieListItem } from '../types/movieListItem';
+import { MovieListItem } from '../@types/movieListItem';
 import { environment } from '../../environments/environment.development';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoadMovie } from '../types/loadMovie';
-import { Cast } from '../types/cast';
-import { Credits } from '../types/credits';
-import { PopularMovies } from '../types/popularMovies';
+import { LoadMovie } from '../@types/loadMovie';
+import { Cast } from '../@types/cast';
+import { Credits } from '../@types/credits';
+import { PopularMovies } from '../@types/popularMovies';
 
 @Injectable({
   providedIn: 'root', // Faz o serviço ser global e disponível em toda a aplicação

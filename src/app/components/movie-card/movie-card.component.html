@@ -1,11 +1,11 @@
 <section class="card">
-  <div class="divImg">
+  <div class="divImg" [routerLink]="routerLinkImg">
     <img [src]="'https://image.tmdb.org/t/p/original/' + image" class="card-img-top" alt="Capa filme">
   </div>
   <div class="card-body">
     <div>
       <h5 class="card-title">{{ movieTitle }}</h5>
-      <p class="card-text">{{ releaseDate | date:'longDate' }}</p>
+      <p class="card-text">{{ releaseDate | date:'longDate':'' : codeDate }}</p>
     </div>
     <div>
       <img src="assets/coracaoContorno.png" alt="" width="15" height="15">

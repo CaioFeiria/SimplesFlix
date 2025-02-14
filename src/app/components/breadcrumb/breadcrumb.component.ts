@@ -1,15 +1,28 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { RoutesPath } from '../../types/routesPath';
+import { Component, Input } from '@angular/core';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterLink,
+} from '@angular/router';
+import { Breadcrumb } from '../../@types/breadCrumb';
+import { BreadCrumbService } from '../../service/bread-crumb.service';
 
 @Component({
   selector: 'app-breadcrumb',
-  imports: [CommonModule, RouterLink],
   templateUrl: './breadcrumb.component.html',
-  styleUrl: './breadcrumb.component.scss',
+  styleUrls: ['./breadcrumb.component.scss'],
+  imports: [CommonModule, RouterLink],
 })
 export class BreadcrumbComponent {
-  @Input() currentRoute?: RoutesPath;
-  @Input() previousRoutes?: RoutesPath[];
+  breadcrumbs: Breadcrumb[] = [];
+
+  constructor(private breadcrumbService: BreadCrumbService) {}
+
+  ngOnInit() {
+    this.breadcrumbService.breadcrumbs$.subscribe((crumbs) => {
+      this.breadcrumbs = crumbs;
+    });
+  }
 }

@@ -8,11 +8,18 @@ import {
 import { AvatarComponent } from '../avatar/avatar.component';
 import { CommonModule } from '@angular/common';
 import { LanguageSelectorService } from '../../service/language-selector.service';
-import { LanguageForApplication } from '../../types/languageApplication';
+import { LanguageForApplication } from '../../@types/languageApplication';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-side-bar',
-  imports: [RouterLink, RouterLinkActive, AvatarComponent, CommonModule],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    AvatarComponent,
+    CommonModule,
+    TranslatePipe,
+  ],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss',
 })

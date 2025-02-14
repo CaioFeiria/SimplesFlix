@@ -12,7 +12,7 @@
     />
     <div class="secCastAndSinopsis">
       <div class="divCast">
-        <h3 class="title">Elenco</h3>
+        <h3 class="title">{{ 'movies.details.casting' | translate }}</h3>
         <app-avatar
           *ngFor="let person of fourFirtsCasts"
           [name]="person.name"
@@ -21,7 +21,7 @@
         />
         <div class="divButton">
           <app-common-button
-            label="Ver mais +"
+            [label]="'actions.loadMorePlus' | translate"
             (click)="loadModalCast(); loadMoreCasts()"
           />
         </div>
@@ -29,7 +29,7 @@
       <div>
         <app-synopsis-card
           [sinopse]="
-            movieDetails.overview ? movieDetails.overview : 'Não possui sinopse'
+            movieDetails.overview ? movieDetails.overview : 'movies.details.emptySynopsis' | translate
           "
         />
       </div>
@@ -56,38 +56,38 @@
         <ng-content>
           <app-review-card
             [isNotEmpty]="false"
-            reviewContent="Nenhuma avaliação publicada sobre esse filme!"
+            [reviewContent]="'movies.details.reviewCard.emptyReview' | translate "
           />
         </ng-content>
       }
     </div>
     <div class="divForm">
       <div>
-        <h4>Adicione uma avaliação</h4>
+        <h4>{{ 'movies.details.reviewCard.addReview' | translate }}</h4>
       </div>
       <form [formGroup]="formReviews" class="form" (ngSubmit)="onSubmit()">
         <div class="divContainerInputs">
           <div class="divInpName">
-            <label for="name">Nome</label>
+            <label for="name">{{ 'movies.details.reviewCard.name' | translate }}</label>
             <input
               type="text"
               formControlName="author"
               name="name"
               id="name"
-              placeholder="Ex: Josias"
+              placeholder="Ex: Jhon"
             />
             <p *ngIf="formReviews.get('author')?.invalid && formReviews.get('author')?.touched" 
             style="color: red; font-size: 11px;">
               <ng-container *ngIf="formReviews.get('author')?.hasError('required')">
-                Nome é obrigatório.
+                {{ 'movies.details.reviewCard.errorsForm.nameRequired' | translate }}
               </ng-container>
               <ng-container *ngIf="formReviews.get('author')?.hasError('minlength')">
-                O nome precisa ter pelo menos 3 caracteres.
+                {{ 'movies.details.reviewCard.errorsForm.nameCharacters' | translate }}
               </ng-container>
             </p>
           </div>
           <div class="divInpRating">
-            <label for="rating">Nota</label>
+            <label for="rating">{{ 'movies.details.reviewCard.rate' | translate }}</label>
             <input
               type="number"
               formControlName="rating"
@@ -98,19 +98,19 @@
             <p *ngIf="formReviews.get('rating')?.invalid && formReviews.get('rating')?.touched" 
             style="color: red; font-size: 11px;">
               <ng-container *ngIf="formReviews.get('rating')?.hasError('required')">
-                Nota é obrigatória.
+                {{ 'movies.details.reviewCard.errorsForm.rateRequired' | translate }}
               </ng-container>
               <ng-container *ngIf="formReviews.get('rating')?.hasError('max')">
-                A nota não pode ser maior que 10.
+                {{ 'movies.details.reviewCard.errorsForm.rateGreaterTen' | translate }}
               </ng-container>
               <ng-container *ngIf="formReviews.get('rating')?.hasError('min')">
-                A nota não pode ser menor que 0.
+                {{ 'movies.details.reviewCard.errorsForm.rateSmallerZero' | translate }}
               </ng-container>
             </p>            
           </div>
   
           <div class="divInpDate">
-            <label for="watchedDate">Assistido em</label>
+            <label for="watchedDate">{{ 'movies.details.reviewCard.watchedIn' | translate }}</label>
             <input
               type="date"
               formControlName="watchedDate"
@@ -120,36 +120,36 @@
             <p *ngIf="formReviews.get('watchedDate')?.invalid || formReviews.get('watchedDate')?.touched"
             style="color: red; font-size: 11px;">
               <ng-container *ngIf="formReviews.get('watchedDate')?.hasError('required')">
-                Data é obrigatória.
+                {{ 'movies.details.reviewCard.errorsForm.watchedInRequired' | translate }}
               </ng-container>
               <ng-container *ngIf="!this.dateNotInFuture()">
-                Data não pode ser posterior a data de hoje.
+                {{ 'movies.details.reviewCard.errorsForm.watchedAfterCurrrentDate' | translate }}
               </ng-container>
               <ng-container *ngIf="!this.dateNotBeforeReleaseDate()">
-                Data não pode ser anterior ao lançamento do filme.
+                {{ 'movies.details.reviewCard.errorsForm.wacthedBeforeReleaseDate' | translate }}
               </ng-container>
             </p>
           </div>
         </div>
 
         <div>
-          <label for="review">Review</label>
+          <label for="review">{{ 'movies.details.reviewCard.reviewComment' | translate }}</label>
           <textarea
             type="text"
             formControlName="reviewContent"
             name="review"
             id="review"
-            placeholder="Ex: Muito bom..."
+            [placeholder]="'movies.details.reviewCard.reviewPlaceholder' | translate"
           ></textarea>
           <p *ngIf="formReviews.get('reviewContent')?.invalid && formReviews.get('reviewContent')?.touched"
           style="color: red; font-size: 11px;">
-            Review é obrigatório.
+          {{ 'movies.details.reviewCard.errorsForm.reviewRequired' | translate }}
           </p>
         </div>
         
         <div class="divBtnForm">
           <app-common-button 
-          [label]="'Publicar'" 
+          [label]="'actions.publish' | translate" 
           type="submit"
           [isDisable]="formInvalido"
           [action]="loadModalAddReview"
@@ -163,13 +163,13 @@
 <ng-container *ngIf="exibirModalAddReview">
   <app-modal-container (visivelChange)="loadModalAddReview()" [isAlert]="true">
     <div app-modal-title class="modal-title">
-      <h2>Adicionar Review</h2>
+      <h2>{{ 'modal.modalAddReview.title' | translate }}</h2>
     </div>
     <div app-modal-body class="modal-body">
-      <p>Seu review foi publicado com sucesso!</p>
+      <p>{{ 'modal.modalAddReview.message' | translate }}</p>
     </div>
     <div app-modal-footer class="modal-footer">
-      <app-common-button label="Fechar" (click)="loadModalAddReview()" />
+      <app-common-button [label]="'actions.close' | translate" (click)="loadModalAddReview()" />
     </div>
   </app-modal-container>
 </ng-container>
@@ -177,13 +177,13 @@
 <ng-container *ngIf="exibirModalErroReview">
   <app-modal-container (visivelChange)="loadModalErroReview()" [isAlert]="true">
     <div app-modal-title class="modal-title">
-      <h2>Alerta</h2>
+      <h2>{{ 'modal.modalErroReview.title' | translate }}</h2>
     </div>
     <div app-modal-body class="modal-body">
-      <p>Não foi possivel publicar sua avaliação, tente novamente mais tarde.</p>
+      <p>{{ 'modal.modalErroReview.message' | translate }}</p>
     </div>
     <div app-modal-footer class="modal-footer">
-      <app-common-button label="Fechar" (click)="loadModalErroReview()" />
+      <app-common-button [label]="'actions.close' | translate" (click)="loadModalErroReview()" />
     </div>
   </app-modal-container>
 </ng-container>
@@ -191,7 +191,7 @@
 <ng-container *ngIf="exibirModalCast">
   <app-modal-container (visivelChange)="loadModalCast()">
     <div app-modal-title class="modal-title">
-      <h2>Elenco</h2>
+      <h2>{{ 'modal.modalCast.title' | translate }}</h2>
     </div>
     <div app-modal-body class="modal-body">
       <app-avatar
@@ -202,7 +202,7 @@
       />
     </div>
     <div app-modal-footer class="modal-footer">
-      <app-common-button label="Fechar" (click)="loadModalCast()" />
+      <app-common-button [label]="'actions.close' | translate" (click)="loadModalCast()" />
     </div>
   </app-modal-container>
 </ng-container>

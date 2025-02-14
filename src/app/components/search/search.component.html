@@ -3,6 +3,6 @@
     type="text"
     [(ngModel)]="search"
     (input)="searched()"
-    placeholder="Busque um filme..."
+    [placeholder]="'search.searchMovie' | translate"
   />
 </section>

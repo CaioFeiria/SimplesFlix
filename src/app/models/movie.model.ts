@@ -1,4 +1,4 @@
-import { Cast } from '../types/cast';
+import { Cast } from '../@types/cast';
 
 export type Movie = {
   id: number;
