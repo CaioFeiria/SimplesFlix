@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AvatarComponent } from '../avatar/avatar.component';
-import { ReviewsApiService } from '../../service/reviews-api.service';
+import { ReviewsApiService } from '../../services/reviews-api.service';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
-import { LanguageSelectorService } from '../../service/language-selector.service';
+import { LanguageSelectorService } from '../../services/language-selector.service';
 
 @Component({
   selector: 'app-review-card',

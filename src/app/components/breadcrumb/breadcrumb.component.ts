@@ -7,7 +7,7 @@ import {
   RouterLink,
 } from '@angular/router';
 import { Breadcrumb } from '../../@types/breadCrumb';
-import { BreadCrumbService } from '../../service/bread-crumb.service';
+import { BreadCrumbService } from '../../services/bread-crumb.service';
 
 @Component({
   selector: 'app-breadcrumb',

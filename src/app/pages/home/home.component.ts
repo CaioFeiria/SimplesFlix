@@ -2,10 +2,11 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonButtonComponent } from '../../components/common-button/common-button.component';
 import { TranslatePipe } from '@ngx-translate/core';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
-import { MovieService } from '../../service/movie.service';
 import { MovieListItem } from '../../@types/movieListItem';
-import { LanguageSelectorService } from '../../service/language-selector.service';
+import { LanguageSelectorService } from '../../services/language-selector.service';
 import { RouterLink } from '@angular/router';
+import { FavoritesService } from '../../services/favorites.service';
+import { FavoriteMovie } from '../../@types/movieFavorite';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +23,11 @@ import { RouterLink } from '@angular/router';
 export class HomeComponent implements OnInit {
   movies: MovieListItem[] = [];
   codeLanguage!: string;
+  favorites: FavoriteMovie[] = [];
 
   constructor(
-    private movieService: MovieService,
-    private languageService: LanguageSelectorService
+    private languageService: LanguageSelectorService,
+    private favoritesService: FavoritesService
   ) {}
 
   ngOnInit(): void {
@@ -34,9 +36,10 @@ export class HomeComponent implements OnInit {
   }
 
   loadFavorites(): void {
-    this.movieService.getPopularMovies(this.codeLanguage, 12).subscribe({
-      next: (mov) => {
-        this.movies = mov.results;
+    this.favoritesService.getFavorites().subscribe({
+      next: (favorites) => {
+        this.favorites = favorites;
+        this.loadFavorites();
       },
     });
   }

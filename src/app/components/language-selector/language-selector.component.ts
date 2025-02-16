@@ -4,7 +4,7 @@ import {
   LanguageDetails,
   languageDetails,
 } from '../../enums/language.enum';
-import { LanguageSelectorService } from '../../service/language-selector.service';
+import { LanguageSelectorService } from '../../services/language-selector.service';
 import { Observable, Subject } from 'rxjs';
 
 @Component({

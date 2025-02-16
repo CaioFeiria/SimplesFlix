@@ -8,7 +8,7 @@ import {
 import { SideBarComponent } from '../side-bar/side-bar.component';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { LanguageSelector } from '../language-selector/language-selector.component';
-import { BreadCrumbService } from '../../service/bread-crumb.service';
+import { BreadCrumbService } from '../../services/bread-crumb.service';
 
 @Component({
   selector: 'app-layout',

@@ -5,7 +5,7 @@ import { Directing } from '../../@types/directing';
 import { Genres } from '../../@types/genres';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { LanguageSelectorService } from '../../service/language-selector.service';
+import { LanguageSelectorService } from '../../services/language-selector.service';
 
 @Component({
   selector: 'app-card-details-movie',

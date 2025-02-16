@@ -9,7 +9,7 @@ import { CardDetailsMovieComponent } from '../../components/card-details-movie/c
 import { ActivatedRoute } from '@angular/router';
 import { SynopsisCardComponent } from '../../components/synopsis-card/synopsis-card.component';
 import { CommonModule, DatePipe } from '@angular/common';
-import { MovieService } from '../../service/movie.service';
+import { MovieService } from '../../services/movie.service';
 import { CommonButtonComponent } from '../../components/common-button/common-button.component';
 import { LoadMovie } from '../../@types/loadMovie';
 import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
@@ -17,9 +17,9 @@ import { AvatarComponent } from '../../components/avatar/avatar.component';
 import { Cast } from '../../@types/cast';
 import { Directing } from '../../@types/directing';
 import { ModalContainerComponent } from '../../components/modal/modal-container/modal-container.component';
-import { LanguageSelectorService } from '../../service/language-selector.service';
+import { LanguageSelectorService } from '../../services/language-selector.service';
 import { Review } from '../../@types/review';
-import { ReviewsApiService } from '../../service/reviews-api.service';
+import { ReviewsApiService } from '../../services/reviews-api.service';
 import { ReviewCardComponent } from '../../components/review-card/review-card.component';
 import {
   FormControl,
@@ -27,7 +27,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { BreadCrumbService } from '../../service/bread-crumb.service';
+import { BreadCrumbService } from '../../services/bread-crumb.service';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({

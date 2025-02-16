@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ObservableSearchService } from '../../service/search.service';
+import { ObservableSearchService } from '../../services/search.service';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({

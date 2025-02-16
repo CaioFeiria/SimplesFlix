@@ -14,6 +14,7 @@
       @for (movie of movies; track $index) {
         <div class="divMovies">
             <app-movie-card
+              [id]="movie.id"
               [image]="movie.poster_path"
               [movieTitle]="movie.title"
               [releaseDate]="movie.release_date" 

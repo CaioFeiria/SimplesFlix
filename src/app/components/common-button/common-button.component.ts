@@ -14,5 +14,4 @@ export class CommonButtonComponent {
   @Input() isDisable: boolean = false;
   @Input() colorWhite: boolean = false;
   @Input() action!: () => void;
-  //@Input() action!: VoidFunction;
 }
