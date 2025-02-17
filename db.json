@@ -273,74 +273,60 @@
   ],
   "favorites": [
     {
-      "id": "c298",
-      "movieId": 1160956,
-      "poster_path": "/rO62kjEpxKoi22euZlM11o2hRJe.jpg",
-      "title": "Operação Panda",
-      "release_date": "2024-10-01"
+      "id": "cbe4",
+      "movieId": 822119,
+      "poster_path": "/5nbSgP8f5LMCI0PwVRRaHJaUmR3.jpg",
+      "title": "Capitão América: Admirável Mundo Novo",
+      "release_date": "2025-02-12"
     },
     {
-      "id": "d5cd",
-      "movieId": 1249289,
-      "poster_path": "/6XVIRVQICfefW8UrjHVasraEgou.jpg",
-      "title": "Código Alarum",
-      "release_date": "2025-01-16"
-    },
-    {
-      "id": "f6ba",
-      "movieId": 939243,
-      "poster_path": "/tfM1T6tAivjvy0sLwt6Y9WvlmzB.jpg",
-      "title": "Sonic 3: O Filme",
-      "release_date": "2024-12-19"
-    },
-    {
-      "id": "1fe5",
-      "movieId": 927342,
-      "poster_path": "/eCB06m1KUGilEOlIzb40nkQhVY0.jpg",
-      "title": "அமரன்",
-      "release_date": "2024-10-31"
-    },
-    {
-      "id": "04d9",
+      "id": "58e5",
       "movieId": 1241982,
       "poster_path": "/ulVUcVy919yt3IJKtmiJBzf4Kqt.jpg",
       "title": "Moana 2",
       "release_date": "2024-11-21"
     },
     {
-      "id": "b817",
+      "id": "883c",
+      "movieId": 1138749,
+      "poster_path": "/75O9xgGobL0FIIgayMxwuL8PeLJ.jpg",
+      "title": "The Island",
+      "release_date": "2023-07-21"
+    },
+    {
+      "id": "ad5c",
       "movieId": 993710,
       "poster_path": "/m4gzzzeYRmrwasrBdJmjhBmjS3U.jpg",
       "title": "De Volta à Ação",
       "release_date": "2025-01-15"
     },
     {
-      "id": "e4f6",
-      "movieId": 933260,
-      "poster_path": "/vWeOgzlhnP1sS23H3rzctGHB9Nb.jpg",
-      "title": "A Substância",
-      "release_date": "2024-09-07"
+      "id": "0176",
+      "movieId": 762509,
+      "poster_path": "/iMVuv6Gz5fj7vZ51IjRF3AiW87y.jpg",
+      "title": "Mufasa: O Rei Leão",
+      "release_date": "2024-12-18"
     },
     {
-      "id": "1927",
-      "movieId": 1255788,
-      "poster_path": "/qxqwLXgd4vjouSsxKXbGhQyjwoa.jpg",
-      "title": "O Jardineiro e a Lista da Morte",
-      "release_date": "2025-01-30"
-    },
-    {
-      "id": "ea36",
-      "movieId": 157336,
-      "poster_path": "/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg",
-      "title": "Interestelar",
-      "release_date": "2014-11-05"
-    },
-    {
-      "id": "47ad",
+      "id": "dc16",
       "movieId": 1022789,
       "poster_path": "/xGvz7nlGQeePcVOpAzOcHsC7kRt.jpg",
       "title": "Divertida Mente 2",
       "release_date": "2024-06-11"
+    },
+    {
+      "id": "2250",
+      "movieId": 823219,
+      "poster_path": "/66Y6qdAmCTtzrtGSPrwHihIZP0W.jpg",
+      "title": "Flow",
+      "release_date": "2024-08-29"
+    },
+    {
+      "id": "ef5b",
+      "movieId": 516729,
+      "poster_path": "/lmQnyeuRCDXf5MFNu3eyznO4FTn.jpg",
+      "title": "Paddington: Uma Aventura na Floresta",
+      "release_date": "2024-11-08"
     }
   ]
 }

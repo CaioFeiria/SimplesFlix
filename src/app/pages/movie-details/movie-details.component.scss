@@ -65,11 +65,15 @@
   flex-wrap: wrap;
   padding-top: 25px;
   gap: 6rem;
+
+  .divReviews {
+    padding-left: 6rem;
+  }
 }
 
 .divForm {
   background-color: #ffffff;
-  width: 41.9rem;
+  width: 41.5rem;
   height: auto;
   padding: 30px;
   margin-top: 19px;
@@ -274,6 +278,13 @@
       }
     }
   }
+  .secRevAndForm {
+    gap: 4rem;
+
+    .divReviews {
+      padding-left: 30px;
+    }
+  }
 }
 
 @media (min-width: 1900px) {
@@ -308,14 +319,18 @@
     }
   }
   .secRevAndForm {
-    gap: 14.4rem;
+    gap: 9rem;
+
+    .divReviews {
+      padding-left: 6rem;
+    }
 
     .mySwiper {
       left: 6rem;
     }
 
     .divForm form {
-      width: 51.7rem;
+      width: 51rem;
     }
   }
 }

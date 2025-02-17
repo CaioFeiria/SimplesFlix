@@ -19,7 +19,8 @@
   "home": {
     "bannerListMovies": "Create your movie list",
     "messageFavorites": "Save your favorite movies and stay up to date with all the details.",
-    "yourFavorites": "Your favorites"
+    "yourFavorites": "Your favorites",
+    "emptyFavorite": "No movies have been added to favorites yet!"
   },
   "movies": {
     "title": "Movies",

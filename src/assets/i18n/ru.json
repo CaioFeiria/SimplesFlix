@@ -1,8 +1,8 @@
 {
   "actions": {
     "confirm": "Подтвердить",
-    "loadMore": "Загрузить больше",
-    "loadMorePlus": "Загрузить больше +",
+    "loadMore": "Загрузить ещё",
+    "loadMorePlus": "Загрузить ещё +",
     "publish": "Опубликовать",
     "close": "Закрыть",
     "watchMovies": "Смотреть фильмы"
@@ -18,27 +18,28 @@
   },
   "home": {
     "bannerListMovies": "Создайте свой список фильмов",
-    "messageFavorites": "Сохраняйте свои любимые фильмы и следите за всеми новыми подробностями.",
-    "yourFavorites": "Ваши фавориты"
+    "messageFavorites": "Сохраните свои любимые фильмы и следите за всеми деталями.",
+    "yourFavorites": "Ваши избранные",
+    "emptyFavorite": "Фильмы в избранное ещё не добавлены!"
   },
   "movies": {
     "title": "Фильмы",
     "listedMovies": "список фильмов",
     "emptyMovies": "Фильмы не найдены.",
     "details": {
-      "director": "Режиссер",
-      "casting": "Актеры",
-      "synopsis": "Сюжет",
+      "director": "Режиссёр",
+      "casting": "Актёры",
+      "synopsis": "Синопсис",
       "emptySynopsis": "Нет синопсиса.",
       "reviewCard": {
-        "emptyReview": "Для этого фильма нет опубликованных рецензий!",
-        "addReview": "Добавить рецензию",
+        "emptyReview": "Для этого фильма ещё нет отзывов!",
+        "addReview": "Добавить отзыв",
         "rate": "Оценить",
-        "watchedIn": "Просмотрено в",
+        "watchedIn": "Просмотрено",
         "name": "Имя",
-        "reviewComment": "Комментарий рецензии",
-        "reviewPlaceholder": "Пример: Очень хорошо...",
-        "assistedIn": "Просмотрено в",
+        "reviewComment": "Комментарий",
+        "reviewPlaceholder": "Например: Очень хороший...",
+        "assistedIn": "Просмотрено",
         "errorsForm": {
           "nameRequired": "Имя обязательно.",
           "nameCharacters": "Имя должно содержать не менее 3 символов.",
@@ -46,24 +47,24 @@
           "rateGreaterTen": "Оценка не может быть больше 10.",
           "rateSmallerZero": "Оценка не может быть меньше 0.",
           "watchedInRequired": "Дата обязательна.",
-          "watchedAfterCurrrentDate": "Дата не может быть позже текущей.",
-          "wacthedBeforeReleaseDate": "Дата не может быть раньше даты релиза фильма.",
-          "reviewRequired": "Рецензия обязательна."
+          "watchedAfterCurrrentDate": "Дата не может быть позднее сегодняшнего дня.",
+          "wacthedBeforeReleaseDate": "Дата не может быть раньше даты выхода фильма.",
+          "reviewRequired": "Отзыв обязателен."
         }
       }
     }
   },
   "modal": {
     "modalAddReview": {
-      "title": "Добавить рецензию",
-      "message": "Ваша рецензия успешно опубликована!"
+      "title": "Добавить отзыв",
+      "message": "Ваш отзыв успешно опубликован!"
     },
     "modalErroReview": {
       "title": "Предупреждение",
-      "message": "Не удалось опубликовать вашу рецензию, попробуйте снова позже."
+      "message": "Не удалось опубликовать ваш отзыв. Попробуйте позже."
     },
     "modalCast": {
-      "title": "Актеры"
+      "title": "Актёры"
     }
   }
 }

@@ -9,6 +9,4 @@ export type LoadMovie = {
   vote_average: string;
   genres: Genres[];
   title: string;
-  // castDetails: Cast[];
-  // movie: Movie;
 };

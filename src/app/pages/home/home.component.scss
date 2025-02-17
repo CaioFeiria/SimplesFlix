@@ -17,7 +17,7 @@
       top: 20px;
       left: 0;
       width: 100%;
-      height: 95.3%;
+      height: 95.8%;
       background: linear-gradient(to right, #6d96ff 20%, #1d4ed800);
       z-index: 2000;
       border-radius: 8px;
@@ -70,7 +70,18 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      height: 30rem;
+      height: 32rem;
+    }
+
+    @media (min-width: 1900px) {
+      swiper-slide {
+        height: 35rem;
+      }
     }
   }
+}
+
+.emptyFavorite {
+  font-size: 18px;
+  padding: 40px 0px;
 }

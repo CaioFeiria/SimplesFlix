@@ -7,6 +7,9 @@ import { LanguageSelectorService } from '../../services/language-selector.servic
 import { RouterLink } from '@angular/router';
 import { FavoritesService } from '../../services/favorites.service';
 import { FavoriteMovie } from '../../@types/movieFavorite';
+import { MovieService } from '../../services/movie.service';
+import { ReviewCardComponent } from '../../components/review-card/review-card.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +18,7 @@ import { FavoriteMovie } from '../../@types/movieFavorite';
     TranslatePipe,
     MovieCardComponent,
     RouterLink,
+    CommonModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -27,7 +31,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private languageService: LanguageSelectorService,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private movieService: MovieService
   ) {}
 
   ngOnInit(): void {
