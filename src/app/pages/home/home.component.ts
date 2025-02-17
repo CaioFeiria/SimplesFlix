@@ -8,8 +8,9 @@ import { RouterLink } from '@angular/router';
 import { FavoritesService } from '../../services/favorites.service';
 import { FavoriteMovie } from '../../@types/movieFavorite';
 import { MovieService } from '../../services/movie.service';
-import { ReviewCardComponent } from '../../components/review-card/review-card.component';
 import { CommonModule } from '@angular/common';
+import { Movie } from '../../models/movie.model';
+import { LoadMovie } from '../../@types/loadMovie';
 
 @Component({
   selector: 'app-home',
@@ -25,9 +26,8 @@ import { CommonModule } from '@angular/common';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeComponent implements OnInit {
-  movies: MovieListItem[] = [];
   codeLanguage!: string;
-  favorites: FavoriteMovie[] = [];
+  favorites: LoadMovie[] = [];
 
   constructor(
     private languageService: LanguageSelectorService,
@@ -36,18 +36,29 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadFavorites();
     this.getCodeLang();
   }
 
   loadFavorites(): void {
+    this.favorites = [];
     this.favoritesService.getFavorites().subscribe({
-      next: (favorites) => {
-        this.favorites = favorites;
-        this.loadFavorites();
+      next: (movies) => {
+        movies.forEach((element) => {
+          console.log('ELEMENT:', element);
+          this.movieService
+            .getMovieById(this.codeLanguage, element.movieId.toString())
+            .subscribe({
+              next: (value) => {
+                this.favorites.push(value);
+                console.log(this.favorites);
+              },
+            });
+        });
       },
     });
   }
+
+  movieDeleted(): void {}
 
   getCodeLang(): void {
     this.languageService.getCode().subscribe({

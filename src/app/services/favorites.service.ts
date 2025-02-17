@@ -15,9 +15,7 @@ export class FavoritesService {
     return this.http.get<FavoriteMovie[]>(this.apiUrl);
   }
 
-  addFavorite(
-    favoriteMovie: Omit<FavoriteMovie, 'id'>
-  ): Observable<FavoriteMovie> {
+  addFavorite(favoriteMovie: FavoriteMovie): Observable<FavoriteMovie> {
     return this.http.post<FavoriteMovie>(`${this.apiUrl}`, {
       ...favoriteMovie,
     });

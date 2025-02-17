@@ -1,5 +1,12 @@
 import { CommonModule, DatePipe, DecimalPipe } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LanguageSelectorService } from '../../services/language-selector.service';
 import { FavoritesService } from '../../services/favorites.service';
@@ -20,6 +27,7 @@ export class MovieCardComponent {
   @Input() image!: string;
   @Input() routerLinkImg!: (string | number)[];
   @Input() isFavorite: boolean = false;
+  @Output() deleted = new EventEmitter<boolean>();
   codeDate!: string;
   movie!: FavoriteMovie;
   idDbJson: string | undefined = '';
@@ -35,21 +43,13 @@ export class MovieCardComponent {
         this.codeDate = code;
       },
     });
-    this.createMovie(this.id, this.image, this.movieTitle, this.releaseDate);
+    this.createMovie(this.id);
     this.checkFavorite();
     console.log('ID ONINIT:', this.id);
   }
-  createMovie(
-    movieId: number,
-    poster_path: string,
-    title: string,
-    release_date: string
-  ): void {
+  createMovie(movieId: number): void {
     this.movie = {
       movieId: movieId,
-      poster_path: poster_path,
-      title: title,
-      release_date: release_date,
     };
   }
 
@@ -57,9 +57,7 @@ export class MovieCardComponent {
     if (!this.isFavorite) {
       this.favoritesService.getFavorites().subscribe({
         next: (favorites) => {
-          console.log(favorites);
           this.isFavorite = favorites.some((fav) => fav.movieId === this.id);
-          console.log(this.isFavorite);
         },
       });
     }
@@ -71,11 +69,12 @@ export class MovieCardComponent {
         next: (movie) => {
           movie.forEach((value) => {
             if (value.movieId == this.id) {
-              console.log('REMOVENDO FILME: ', value.movieId);
+              console.log('REMOVENDO FILME: ', value.id);
               this.favoritesService.removeFavorite(value.id!).subscribe({
                 next: () => {
                   this.isFavorite = false;
                   this.checkFavorite();
+                  this.deleted.emit();
                 },
               });
             }
@@ -86,6 +85,7 @@ export class MovieCardComponent {
       this.favoritesService.addFavorite(this.movie).subscribe({
         next: () => {
           this.isFavorite = true;
+          this.checkFavorite();
         },
       });
     }

@@ -208,7 +208,6 @@ export class MovieDetailsComponent implements OnInit {
   formValidation(): void {
     this.formReviews.valueChanges.subscribe({
       next: (val) => {
-        console.log('AQUIIIIIIIII: ', val);
         if (this.formReviews.invalid) {
           this.formInvalido = true;
         } else {
@@ -222,7 +221,9 @@ export class MovieDetailsComponent implements OnInit {
     this.formReviews.get('author')?.reset();
     this.formReviews.get('reviewContent')?.reset();
     this.formReviews.get('rating')?.reset();
-    this.formReviews.get('watchedDate')?.reset();
+    this.formReviews
+      .get('watchedDate')
+      ?.value(this.datePipe.transform(new Date(), 'yyyy-MM-dd'));
   }
 }
 

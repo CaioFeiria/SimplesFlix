@@ -24,12 +24,13 @@
       @for (item of favorites; track $index) {
       <swiper-slide>
         <app-movie-card
-          [id]="item.movieId"
+          [id]="item.id"
           [image]="item.poster_path"
           [movieTitle]="item.title"
           [releaseDate]="item.release_date"
-          [routerLinkImg]="['/movie', item.movieId]"
+          [routerLinkImg]="['/movie', item.id]"
           [isFavorite]="true"
+          (deleted)="loadFavorites()"
         />
       </swiper-slide>
       }

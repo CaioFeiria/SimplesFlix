@@ -62,13 +62,10 @@
 .secRevAndForm {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   padding-top: 25px;
   gap: 6rem;
-
-  .divReviews {
-    padding-left: 6rem;
-  }
 }
 
 .divForm {
@@ -280,10 +277,6 @@
   }
   .secRevAndForm {
     gap: 4rem;
-
-    .divReviews {
-      padding-left: 30px;
-    }
   }
 }
 
@@ -320,10 +313,6 @@
   }
   .secRevAndForm {
     gap: 9rem;
-
-    .divReviews {
-      padding-left: 6rem;
-    }
 
     .mySwiper {
       left: 6rem;
